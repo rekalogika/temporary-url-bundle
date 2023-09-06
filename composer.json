@@ -36,7 +36,6 @@
     "require-dev": {
         "mockery/mockery": "^1.6",
         "phpunit/phpunit": "^9.5",
-        "symfony/config": "^6.0",
         "phpstan/phpstan-mockery": "^1.1",
         "phpstan/phpstan": "^1.10",
         "vimeo/psalm": "^5.15",
