@@ -1,0 +1,48 @@
+{
+    "name": "rekalogika/temporary-url-bundle",
+    "description": "Symfony bundle for creating temporary URLs to your resources. You provide the resource in a plain PHP object, and a service to turn it into a HTTP response. The framework handles the rest.",
+    "keywords": [
+        "symfony",
+        "symfony-bundle",
+        "temporary url"
+    ],
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Priyadi Iman Nurcahyo",
+            "email": "priyadi@rekalogika.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rekalogika\\TemporaryUrl\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rekalogika\\TemporaryUrl\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "rekalogika/psr-16-simple-cache-bundle": "^1.0",
+        "psr/simple-cache": "^3.0",
+        "symfony/config": "^6.0",
+        "symfony/dependency-injection": "^6.0",
+        "symfony/http-foundation": "^6.0",
+        "symfony/http-kernel": "^6.0",
+        "symfony/routing": "^6.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.6",
+        "phpunit/phpunit": "^9.5",
+        "symfony/config": "^6.0",
+        "phpstan/phpstan-mockery": "^1.1",
+        "phpstan/phpstan": "^1.10",
+        "vimeo/psalm": "^5.15",
+        "psalm/plugin-phpunit": "^0.18.4",
+        "symfony/event-dispatcher": "^6.0",
+        "symfony/phpunit-bridge": "^6.3",
+        "psalm/plugin-mockery": "^1.1"
+    }
+}
