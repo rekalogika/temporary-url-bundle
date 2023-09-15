@@ -12,24 +12,32 @@
 namespace Rekalogika\TemporaryUrl\DependencyInjection;
 
 use Rekalogika\TemporaryUrl\Attribute\AsTemporaryUrlServer;
+use Rekalogika\TemporaryUrl\Tests\Kernel;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use Twig\Environment;
 
 class RekalogikaTemporaryUrlExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $env = $container->getParameter('kernel.environment');
         $loader = new PhpFileLoader(
             $container,
             new FileLocator(__DIR__ . '/../../config')
         );
+
         $loader->load('services.php');
 
-        if ('test' === $env) {
+        if (class_exists(Environment::class)) {
+            $loader->load('twig.php');
+        }
+
+        $env = $container->getParameter('kernel.environment');
+
+        if ('test' === $env && class_exists(Kernel::class)) {
             $loader->load('services_test.php');
         }
 

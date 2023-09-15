@@ -42,6 +42,10 @@
         "psalm/plugin-phpunit": "^0.18.4",
         "symfony/event-dispatcher": "^6.0",
         "symfony/phpunit-bridge": "^6.3",
-        "psalm/plugin-mockery": "^1.1"
+        "psalm/plugin-mockery": "^1.1",
+        "twig/twig": "^2.12|^3.0"
+    },
+    "suggest": {
+        "twig/twig": "Use the 'temporary_url' filter to generate temporary URLs in Twig templates"
     }
 }

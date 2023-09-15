@@ -17,6 +17,11 @@ use Rekalogika\TemporaryUrl\RekalogikaTemporaryUrlBundle;
 
 class Kernel extends HttpKernelKernel
 {
+    public function __construct()
+    {
+        parent::__construct('test', true);
+    }
+
     public function registerBundles(): iterable
     {
         yield new RekalogikaTemporaryUrlBundle();

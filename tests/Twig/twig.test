@@ -1,0 +1,13 @@
+--TEST--
+Tests 'temporary_url' filter
+
+--TEMPLATE--
+{{ data|temporary_url|split('/')[1] }}
+
+--DATA--
+return [
+    'data' => new \Rekalogika\TemporaryUrl\Data('text/plain', 'foo', 'bar.txt')
+];
+
+--EXPECT--
+temporary-url
