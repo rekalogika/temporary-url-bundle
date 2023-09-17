@@ -19,9 +19,9 @@ jobs:
         operating-system: [ubuntu-latest]
         php: [ '8.1', '8.2' ]
         symfony: [ '6.*' ]
-        deps: [highest,lowest]
+        dep: [highest,lowest]
 
-    name: PHP ${{ matrix.php }}, ${{ matrix.operating-system }}
+    name: Symfony ${{ matrix.symfony }}, ${{ matrix.dep }} deps, PHP ${{ matrix.php }}, ${{ matrix.operating-system }}
 
     steps:
     - uses: actions/checkout@v3
@@ -47,7 +47,7 @@ jobs:
     - name: Install dependencies
       uses: ramsey/composer-install@v2
       with:
-        dependency-versions: ${{ matrix.deps }}
+        dependency-versions: ${{ matrix.dep }}
         composer-options: --prefer-dist --no-progress
       env:
         SYMFONY_REQUIRE: ${{ matrix.symfony }}
