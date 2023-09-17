@@ -3,7 +3,7 @@ Tests 'temporary_url' filter
 
 --TEMPLATE--
 {% apply spaceless %}
-{%- if dawta|temporary_url matches '{^/__temporary-url__/[a-z0-9]+$}' -%}
+{%- if data|temporary_url matches '{^/__temporary-url__/[a-z0-9]+$}' -%}
 ok
 {%- endif -%}
 {% endapply %}
