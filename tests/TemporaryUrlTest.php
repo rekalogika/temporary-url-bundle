@@ -19,6 +19,10 @@ use Rekalogika\TemporaryUrl\Exception\TicketNotFoundException;
 use Rekalogika\TemporaryUrl\Exception\WrongSessionException;
 use Rekalogika\TemporaryUrl\Internal\TemporaryUrlController;
 use Rekalogika\TemporaryUrl\TemporaryUrlGeneratorInterface;
+use Rekalogika\TemporaryUrl\Tests\Model\Data1;
+use Rekalogika\TemporaryUrl\Tests\Model\Data2;
+use Rekalogika\TemporaryUrl\Tests\Model\Data3;
+use Rekalogika\TemporaryUrl\Tests\Model\DataServer;
 
 class TemporaryUrlTest extends TestCase
 {
@@ -69,7 +73,7 @@ class TemporaryUrlTest extends TestCase
         $data = new Data('text/plain', 'foo', 'test.txt');
         $temporaryUrl = $temporaryUrlGenerator->generateUrl($data);
 
-        $this->assertStringStartsWith('/temporary-url/', $temporaryUrl);
+        $this->assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
     }
 
     public function testResponse(): void
@@ -79,7 +83,7 @@ class TemporaryUrlTest extends TestCase
         $data = new Data('text/plain', 'foo', 'test.txt');
         $temporaryUrl = $temporaryUrlGenerator->generateUrl($data);
 
-        $this->assertStringStartsWith('/temporary-url/', $temporaryUrl);
+        $this->assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
 
         $ticket = preg_replace('/^.*\//', '', $temporaryUrl);
         $this->assertNotNull($ticket);
@@ -109,7 +113,7 @@ class TemporaryUrlTest extends TestCase
         $data = new Data('text/plain', 'foo', 'test.txt');
         $temporaryUrl = $temporaryUrlGenerator->generateUrl($data, 2);
 
-        $this->assertStringStartsWith('/temporary-url/', $temporaryUrl);
+        $this->assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
 
         $ticket = preg_replace('/^.*\//', '', $temporaryUrl);
         $this->assertNotNull($ticket);
@@ -136,7 +140,7 @@ class TemporaryUrlTest extends TestCase
         $data = new Data('text/plain', 'foo', 'test.txt');
         $temporaryUrl = $temporaryUrlGenerator->generateUrl($data, null, true);
 
-        $this->assertStringStartsWith('/temporary-url/', $temporaryUrl);
+        $this->assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
 
         $ticket = preg_replace('/^.*\//', '', $temporaryUrl);
         $this->assertNotNull($ticket);
@@ -167,7 +171,7 @@ class TemporaryUrlTest extends TestCase
         $data = new Data('text/plain', 'foo', 'test.txt');
         $temporaryUrl = $temporaryUrlGenerator->generateUrl($data, null, false);
 
-        $this->assertStringStartsWith('/temporary-url/', $temporaryUrl);
+        $this->assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
 
         $ticket = preg_replace('/^.*\//', '', $temporaryUrl);
         $this->assertNotNull($ticket);
@@ -202,5 +206,23 @@ class TemporaryUrlTest extends TestCase
 
         $this->expectException(ServerNotFoundException::class);
         $temporaryUrlGenerator->generateUrl($data, null, false);
+    }
+
+    public function testUnionType(): void
+    {
+        $temporaryUrlGenerator = $this->getTemporaryUrlGenerator();
+
+        $data1 = new Data1('foo');
+        $data2 = new Data2('bar');
+        $data3 = new Data3('baz');
+
+        $url1 = $temporaryUrlGenerator->generateUrl($data1);
+        $url2 = $temporaryUrlGenerator->generateUrl($data2);
+
+        $this->expectException(ServerNotFoundException::class);
+        $url3 = $temporaryUrlGenerator->generateUrl($data3);
+
+        $this->assertStringStartsWith('/__temporary-url__/', $url1);
+        $this->assertStringStartsWith('/__temporary-url__/', $url2);
     }
 }

@@ -16,6 +16,7 @@ use Rekalogika\TemporaryUrl\Internal\TemporaryUrlController;
 use Rekalogika\TemporaryUrl\Internal\TemporaryUrlManager;
 use Rekalogika\TemporaryUrl\TemporaryUrlGeneratorInterface;
 use Rekalogika\TemporaryUrl\Tests\MockFactory;
+use Rekalogika\TemporaryUrl\Tests\Model\DataServer;
 use Rekalogika\TemporaryUrl\Twig\TemporaryUrlTwigExtension;
 use Rekalogika\TemporaryUrl\Twig\TemporaryUrlTwigRuntime;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -78,6 +79,14 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->args([
             '$temporaryUrlManager' => service(TemporaryUrlManager::class),
             '$requestStack' => service(RequestStack::class . '.secondary'),
+        ])
+        ->public();
+
+    // data server for testing
+
+    $services->set(DataServer::class)
+        ->tag('rekalogika.temporary_url.resource_server', [
+            'method' => 'serve'
         ])
         ->public();
 };

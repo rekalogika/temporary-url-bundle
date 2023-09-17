@@ -39,10 +39,10 @@ class UrlGenerator implements UrlGeneratorInterface
         }
 
         return match($referenceType) {
-            self::ABSOLUTE_PATH => '/temporary-url/' . $ticketId,
-            self::ABSOLUTE_URL => 'https://example.com/temporary-url/' . $ticketId,
-            self::NETWORK_PATH => '//example.com/temporary-url/' . $ticketId,
-            self::RELATIVE_PATH => 'temporary-url/' . $ticketId,
+            self::ABSOLUTE_PATH => '/__temporary-url__/' . $ticketId,
+            self::ABSOLUTE_URL => 'https://example.com/__temporary-url__/' . $ticketId,
+            self::NETWORK_PATH => '//example.com/__temporary-url__/' . $ticketId,
+            self::RELATIVE_PATH => '__temporary-url__/' . $ticketId,
             default => throw new \InvalidArgumentException('Unsupported reference type'),
         };
     }
