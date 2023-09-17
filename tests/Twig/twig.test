@@ -2,11 +2,9 @@
 Tests 'temporary_url' filter
 
 --TEMPLATE--
-{% apply spaceless %}
-{%- if data|temporary_url matches '{^/__temporary-url__/[a-z0-9]+$}' -%}
+{% apply spaceless %}{%- if data|temporary_url matches '{^/__temporary-url__/[a-z0-9]+$}' -%}
 ok
-{%- endif -%}
-{% endapply %}
+{%- endif -%}{% endapply %}
 
 --DATA--
 return [
