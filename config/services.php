@@ -17,6 +17,7 @@ use Rekalogika\TemporaryUrl\Internal\TemporaryUrlController;
 use Rekalogika\TemporaryUrl\TemporaryUrlGenerator;
 use Rekalogika\TemporaryUrl\TemporaryUrlGeneratorInterface;
 use Rekalogika\TemporaryUrl\Internal\TemporaryUrlManager;
+use Rekalogika\TemporaryUrl\Internal\TemporaryUrlResourceTransformer;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -28,6 +29,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->set(TemporaryUrlManager::class)
         ->args([
             service(CacheInterface::class),
+            service(TemporaryUrlResourceTransformer::class),
         ]);
 
     $services->set(TemporaryUrlController::class)
@@ -48,4 +50,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             service(UrlGeneratorInterface::class),
             service(RequestStack::class),
         ]);
+
+    $services->set(TemporaryUrlResourceTransformer::class);
 };

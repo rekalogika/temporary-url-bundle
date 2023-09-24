@@ -23,6 +23,7 @@ use Rekalogika\TemporaryUrl\Tests\Model\Data1;
 use Rekalogika\TemporaryUrl\Tests\Model\Data2;
 use Rekalogika\TemporaryUrl\Tests\Model\Data3;
 use Rekalogika\TemporaryUrl\Tests\Model\DataServer;
+use Rekalogika\TemporaryUrl\Tests\Model\UnserializableData;
 
 class TemporaryUrlTest extends TestCase
 {
@@ -224,5 +225,13 @@ class TemporaryUrlTest extends TestCase
 
         $this->assertStringStartsWith('/__temporary-url__/', $url1);
         $this->assertStringStartsWith('/__temporary-url__/', $url2);
+    }
+
+    public function testUnserializableData(): void
+    {
+        $temporaryUrlGenerator = $this->getTemporaryUrlGenerator();
+        $data = new UnserializableData('foo');
+        $url = $temporaryUrlGenerator->generateUrl($data, null, false);
+        $this->assertStringStartsWith('/__temporary-url__/', $url);
     }
 }

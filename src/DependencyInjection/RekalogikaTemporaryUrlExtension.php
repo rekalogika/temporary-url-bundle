@@ -11,6 +11,7 @@
 
 namespace Rekalogika\TemporaryUrl\DependencyInjection;
 
+use Rekalogika\TemporaryUrl\Attribute\AsTemporaryUrlResourceTransformer;
 use Rekalogika\TemporaryUrl\Attribute\AsTemporaryUrlServer;
 use Rekalogika\TemporaryUrl\Tests\Kernel;
 use Symfony\Component\Config\FileLocator;
@@ -57,6 +58,27 @@ class RekalogikaTemporaryUrlExtension extends Extension
                 }
 
                 $definition->addTag('rekalogika.temporary_url.resource_server', [
+                    'method' => $method
+                ]);
+            }
+        );
+
+        $container->registerAttributeForAutoconfiguration(
+            AsTemporaryUrlResourceTransformer::class,
+            static function (
+                ChildDefinition $definition,
+                AsTemporaryUrlResourceTransformer $attribute,
+                \Reflector $reflector
+            ): void {
+                if ($reflector instanceof \ReflectionMethod) {
+                    $method = $reflector->name;
+                } elseif ($reflector instanceof \ReflectionClass) {
+                    $method = '__invoke';
+                } else {
+                    throw new \InvalidArgumentException(sprintf('Invalid attribute usage: "%s" can only be applied to methods or classes.', AsTemporaryUrlResourceTransformer::class));
+                }
+
+                $definition->addTag('rekalogika.temporary_url.resource_transformer', [
                     'method' => $method
                 ]);
             }

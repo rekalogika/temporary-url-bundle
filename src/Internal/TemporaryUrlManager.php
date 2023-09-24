@@ -33,6 +33,7 @@ class TemporaryUrlManager
      */
     public function __construct(
         private CacheInterface $cache,
+        private TemporaryUrlResourceTransformer $resourceTransformer,
         iterable $resourceToServerMap,
         private string $cachePrefix = 'temporary-url-',
         private int $defaultTtl = 1800,
@@ -49,6 +50,8 @@ class TemporaryUrlManager
         null|int|\DateInterval $ttl = null,
         ?string $sessionId = null,
     ): string {
+        $resource = $this->resourceTransformer->transform($resource);
+
         if (!$this->isObjectValid($resource)) {
             throw new ServerNotFoundException($resource::class);
         }

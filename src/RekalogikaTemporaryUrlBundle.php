@@ -12,6 +12,7 @@
 namespace Rekalogika\TemporaryUrl;
 
 use Rekalogika\TemporaryUrl\DependencyInjection\TemporaryUrlPass;
+use Rekalogika\TemporaryUrl\DependencyInjection\TemporaryUrlResourceTransformerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -27,6 +28,7 @@ class RekalogikaTemporaryUrlBundle extends Bundle
         parent::build($container);
 
         $container
-            ->addCompilerPass(new TemporaryUrlPass());
+            ->addCompilerPass(new TemporaryUrlPass())
+            ->addCompilerPass(new TemporaryUrlResourceTransformerPass());
     }
 }

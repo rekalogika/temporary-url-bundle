@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0
+
+* Temporary URL resource transformer to help accepting non-serializable
+  resources.
+  
 ## 1.1.1
 
 * Use regex for Twig testing

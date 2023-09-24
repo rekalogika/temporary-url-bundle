@@ -17,6 +17,7 @@ use Rekalogika\TemporaryUrl\Internal\TemporaryUrlManager;
 use Rekalogika\TemporaryUrl\TemporaryUrlGeneratorInterface;
 use Rekalogika\TemporaryUrl\Tests\MockFactory;
 use Rekalogika\TemporaryUrl\Tests\Model\DataServer;
+use Rekalogika\TemporaryUrl\Tests\Model\UnserializableDataServer;
 use Rekalogika\TemporaryUrl\Twig\TemporaryUrlTwigExtension;
 use Rekalogika\TemporaryUrl\Twig\TemporaryUrlTwigRuntime;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -87,6 +88,17 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->set(DataServer::class)
         ->tag('rekalogika.temporary_url.resource_server', [
             'method' => 'serve'
+        ])
+        ->public();
+
+    // for testing unserializable data
+
+    $services->set(UnserializableDataServer::class)
+        ->tag('rekalogika.temporary_url.resource_server', [
+            'method' => 'serve'
+        ])
+        ->tag('rekalogika.temporary_url.resource_transformer', [
+            'method' => 'transform'
         ])
         ->public();
 };
