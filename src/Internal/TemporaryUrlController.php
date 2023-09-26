@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of rekalogika/temporary-url-bundle package.
  *
@@ -17,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * The controller that handles temporary URL requests.
- * 
+ *
  * @internal
  */
 final class TemporaryUrlController

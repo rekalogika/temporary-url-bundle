@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.1
+
+* php-cs-fixer run
 ## 1.2.0
 
 * Temporary URL resource transformer to help accepting non-serializable

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of rekalogika/temporary-url-bundle package.
  *
@@ -133,7 +135,7 @@ class TemporaryUrlTest extends TestCase
 
         $controller($ticket);
     }
-    
+
     public function testSessionPinning(): void
     {
         $temporaryUrlGenerator = $this->getTemporaryUrlGenerator();
@@ -203,7 +205,7 @@ class TemporaryUrlTest extends TestCase
     {
         $temporaryUrlGenerator = $this->getTemporaryUrlGenerator();
 
-        $data = new DataWithoutServer;
+        $data = new DataWithoutServer();
 
         $this->expectException(ServerNotFoundException::class);
         $temporaryUrlGenerator->generateUrl($data, null, false);

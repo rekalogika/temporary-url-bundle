@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of rekalogika/temporary-url-bundle package.
  *
@@ -13,7 +15,7 @@ namespace Rekalogika\TemporaryUrl\Internal;
 
 /**
  * Transforms a resource into a serializable form.
- * 
+ *
  * @internal
  */
 class TemporaryUrlResourceTransformer
@@ -35,7 +37,7 @@ class TemporaryUrlResourceTransformer
 
         $this->transformerMap = $transformerMap;
     }
-    
+
     public function transform(object $input): object
     {
         foreach ($this->transformerMap as $class => $transformer) {

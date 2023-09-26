@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of rekalogika/temporary-url-bundle package.
  *
@@ -18,7 +20,7 @@ use Rekalogika\TemporaryUrl\Internal\TemporaryUrlParameters;
 
 /**
  * Manages temporary URLS
- * 
+ *
  * @internal
  */
 class TemporaryUrlManager
