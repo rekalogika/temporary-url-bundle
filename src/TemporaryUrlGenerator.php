@@ -38,13 +38,14 @@ final class TemporaryUrlGenerator implements TemporaryUrlGeneratorInterface
             $sessionId = null;
         }
 
-        $ticket = $this->temporaryUrlManager
+        $temporaryUrlResult = $this->temporaryUrlManager
             ->createTicket($resource, $ttl, $sessionId);
 
         return $this->urlGenerator->generate(
             'rekalogika_temporary_url',
             [
-                'ticketid' => $ticket,
+                'ticketid' => $temporaryUrlResult->getTicketId(),
+                'expiration' => $temporaryUrlResult->getExpiration(),
             ],
             $referenceType
         );

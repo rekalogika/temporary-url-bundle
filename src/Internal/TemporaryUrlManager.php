@@ -51,7 +51,7 @@ class TemporaryUrlManager
         object $resource,
         null|int|\DateInterval $ttl = null,
         ?string $sessionId = null,
-    ): string {
+    ): TemporaryUrlResult {
         $resource = $this->resourceTransformer->transform($resource);
 
         if (!$this->isObjectValid($resource)) {
@@ -62,6 +62,8 @@ class TemporaryUrlManager
             ? (int) $ttl->format('%s')
             : ($ttl ?? $this->defaultTtl);
 
+        $expiration = \time() + $ttl - 10;
+
         $ticketid = \bin2hex(\random_bytes(16));
         $temporaryUrlData = new TemporaryUrlParameters($resource, $ttl, $sessionId);
 
@@ -71,7 +73,7 @@ class TemporaryUrlManager
             $ttl,
         );
 
-        return $ticketid;
+        return new TemporaryUrlResult($ticketid, $expiration);
     }
 
     private function isObjectValid(object $resource): bool
