@@ -5,6 +5,8 @@
 * Add a Stimulus controller to disable expired links.
 * Add `temporary_url_autoexpire` Twig function.
 * Add expiration in the query string of the resulting URL.
+* Make the Stimulus controller to expire links using the expiration in the
+  query string.
 
 ## 1.2.1
 
