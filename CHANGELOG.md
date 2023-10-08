@@ -1,11 +1,15 @@
 # Changelog
 
+## 1.3.0
+
+* Add a Stimulus controller to disable expired links.
+
 ## 1.2.1
 
 * php-cs-fixer run
 ## 1.2.0
 
-* Temporary URL resource transformer to help accepting non-serializable
+* Temporary URL resource transformer to help accept non-serializable
   resources.
   
 ## 1.1.1

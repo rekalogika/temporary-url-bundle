@@ -4,6 +4,7 @@
     "homepage": "https://rekalogika.dev/temporary-url-bundle",
     "keywords": [
         "symfony",
+        "symfony-ux",
         "symfony-bundle",
         "temporary url"
     ],

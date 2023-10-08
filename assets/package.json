@@ -1,0 +1,28 @@
+{
+    "name": "@rekalogika/temporary-url-bundle",
+    "description": "Temporary URL generation for Symfony applications",
+    "license": "MIT",
+    "version": "1.3.0",
+    "symfony": {
+        "controllers": {
+            "autoexpire": {
+                "main": "dist/autoexpire.js",
+                "webpackMode": "eager",
+                "fetch": "eager",
+                "enabled": true,
+                "autoimport": {}
+            }
+        }
+    },
+    "scripts": {
+        "build": "babel src -d dist"
+    },
+    "peerDependencies": {
+        "@hotwired/stimulus": "^3.0"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.12",
+        "@babel/core": "^7.12",
+        "@hotwired/stimulus": "^3.0"
+    }
+}
