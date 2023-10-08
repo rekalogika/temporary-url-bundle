@@ -15,6 +15,7 @@ namespace Rekalogika\TemporaryUrl\Twig;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Twig extension for temporary URL
@@ -29,5 +30,21 @@ class TemporaryUrlTwigExtension extends AbstractExtension
                 [TemporaryUrlTwigRuntime::class, 'generateTemporaryUrl']
             ),
         ];
+    }
+
+    public function getFunctions()
+    {
+        return [
+            new TwigFunction(
+                'temporary_url_autoexpire',
+                [$this, 'autoExpire'],
+                ['is_safe' => ['html']]
+            ),
+        ];
+    }
+
+    public function autoExpire(): string
+    {
+        return 'data-controller="rekalogika--temporary-url-bundle--autoexpire"';
     }
 }

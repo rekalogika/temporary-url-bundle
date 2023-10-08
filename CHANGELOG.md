@@ -3,6 +3,7 @@
 ## 1.3.0
 
 * Add a Stimulus controller to disable expired links.
+* Add `temporary_url_autoexpire` Twig function.
 
 ## 1.2.1
 

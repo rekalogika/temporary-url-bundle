@@ -1,0 +1,12 @@
+--TEST--
+Tests 'temporary_url' filter
+
+--TEMPLATE--
+{{ temporary_url_autoexpire() }}
+
+--DATA--
+return [
+];
+
+--EXPECT--
+data-controller="rekalogika--temporary-url-bundle--autoexpire"
