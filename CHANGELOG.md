@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1
+
+* Fix typehints
+
 ## 1.3.0
 
 * Add a Stimulus controller to disable expired links.
