@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0
+
+* Supports Symfony 7
+
 ## 1.3.1
 
 * Fix typehints
