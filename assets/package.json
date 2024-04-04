@@ -12,6 +12,9 @@
                 "enabled": true,
                 "autoimport": {}
             }
+        },
+        "importmap": {
+            "@hotwired/stimulus": "^3.0"
         }
     },
     "scripts": {
@@ -23,8 +26,10 @@
     "devDependencies": {
         "@babel/cli": "^7.12",
         "@babel/core": "^7.12",
+        "@babel/plugin-transform-class-properties": "^7.24.1",
         "@babel/preset-env": "^7.22.20",
         "@hotwired/stimulus": "^3.0"
     },
-    "dependencies": {}
+    "dependencies": {
+    }
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.1
+
+* feat: Supports AssetMapper
+
 ## 1.4.0
 
 * Supports Symfony 7
