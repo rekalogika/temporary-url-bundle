@@ -29,7 +29,9 @@ class DataServer
         $response = new Response();
         $response->headers->set('Content-Type', $dataResource->getContentType());
 
-        if ($fileName = $dataResource->getFileName()) {
+        $fileName = $dataResource->getFileName();
+
+        if ($fileName !== null) {
             $disposition = HeaderUtils::makeDisposition(
                 HeaderUtils::DISPOSITION_ATTACHMENT,
                 $fileName

@@ -16,14 +16,16 @@ namespace Rekalogika\TemporaryUrl\DependencyInjection;
 use Rekalogika\TemporaryUrl\Attribute\AsTemporaryUrlResourceTransformer;
 use Rekalogika\TemporaryUrl\Attribute\AsTemporaryUrlServer;
 use Rekalogika\TemporaryUrl\Tests\Kernel;
+use Symfony\Component\AssetMapper\AssetMapperInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Twig\Environment;
 
-class RekalogikaTemporaryUrlExtension extends Extension
+class RekalogikaTemporaryUrlExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -85,5 +87,48 @@ class RekalogikaTemporaryUrlExtension extends Extension
                 ]);
             }
         );
+    }
+
+    public function prepend(ContainerBuilder $container)
+    {
+        if (!$this->isAssetMapperAvailable($container)) {
+            return;
+        }
+
+        $container->prependExtensionConfig('framework', [
+            'asset_mapper' => [
+                'paths' => [
+                    __DIR__ . '/../../assets/dist' => '@rekalogika/temporary-url-bundle',
+                ],
+            ],
+        ]);
+    }
+
+    private function isAssetMapperAvailable(ContainerBuilder $container): bool
+    {
+        if (!interface_exists(AssetMapperInterface::class)) {
+            return false;
+        }
+
+        // check that FrameworkBundle 6.3 or higher is installed
+        $bundlesMetadata = $container->getParameter('kernel.bundles_metadata');
+
+        if (!\is_array($bundlesMetadata)) {
+            return false;
+        }
+
+        $frameworkBundleMetadata = $bundlesMetadata['FrameworkBundle'] ?? null;
+
+        if (!\is_array($frameworkBundleMetadata)) {
+            return false;
+        }
+
+        $path = $frameworkBundleMetadata['path'] ?? null;
+
+        if (!\is_string($path)) {
+            return false;
+        }
+
+        return is_file($path . '/Resources/config/asset_mapper.php');
     }
 }
