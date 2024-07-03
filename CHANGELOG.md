@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.2
+
+* build: add dependabot config
+
 ## 1.4.1
 
 * feat: Supports AssetMapper
