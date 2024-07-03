@@ -3,6 +3,7 @@
 ## 1.4.2
 
 * build: add dependabot config
+* test: add missing test for PHP 8.3 and Symfony 7
 
 ## 1.4.1
 
