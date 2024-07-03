@@ -27,6 +27,7 @@
         }
     },
     "require": {
+        "php": "^8.2",
         "rekalogika/psr-16-simple-cache-bundle": "^1.0",
         "psr/simple-cache": "^3.0",
         "symfony/config": "^6.3 || ^7.0",
