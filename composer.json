@@ -41,7 +41,7 @@
         "phpstan/phpstan-mockery": "^1.1",
         "phpstan/phpstan": "^1.10",
         "vimeo/psalm": "^5.15",
-        "psalm/plugin-phpunit": "^0.18.4",
+        "psalm/plugin-phpunit": "^0.19.0",
         "symfony/asset-mapper": "^6.3 || ^7.0",
         "symfony/event-dispatcher": "^6.3 || ^7.0",
         "symfony/phpunit-bridge": "^6.3 || ^7.0",
