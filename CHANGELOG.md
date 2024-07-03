@@ -6,6 +6,7 @@
 * test: add missing test for PHP 8.3 and Symfony 7
 * dep: bump minimum PHP to 8.2
 * dep: bump phpunit to 10
+* fix: fix deprecation warnings
 
 ## 1.4.1
 
