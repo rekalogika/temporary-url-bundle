@@ -23,8 +23,7 @@ final readonly class TemporaryUrlGenerator implements TemporaryUrlGeneratorInter
         private TemporaryUrlManager $temporaryUrlManager,
         private UrlGeneratorInterface $urlGenerator,
         private RequestStack $requestStack,
-    ) {
-    }
+    ) {}
 
     #[\Override]
     public function generateUrl(

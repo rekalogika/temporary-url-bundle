@@ -48,8 +48,8 @@ class TwigTest extends IntegrationTestCase
         return [
             new FactoryRuntimeLoader([
                 TemporaryUrlTwigRuntime::class =>
-                fn (): TemporaryUrlTwigRuntime => $temporaryUrlTwigRuntime,
-            ])
+                fn(): TemporaryUrlTwigRuntime => $temporaryUrlTwigRuntime,
+            ]),
         ];
     }
 }

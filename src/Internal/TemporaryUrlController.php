@@ -27,8 +27,7 @@ final readonly class TemporaryUrlController
     public function __construct(
         private TemporaryUrlManager $temporaryUrlManager,
         private RequestStack $requestStack,
-    ) {
-    }
+    ) {}
 
     public function __invoke(string $ticketid): Response
     {
@@ -54,7 +53,7 @@ final readonly class TemporaryUrlController
             throw new \UnexpectedValueException(sprintf(
                 'The callable must return an instance of "%s", "%s" returned',
                 Response::class,
-                get_debug_type($result)
+                get_debug_type($result),
             ));
         }
 

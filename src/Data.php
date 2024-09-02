@@ -23,8 +23,7 @@ class Data
         private readonly string $contentType,
         private readonly string $content,
         private readonly ?string $fileName,
-    ) {
-    }
+    ) {}
 
     public function getContentType(): string
     {

@@ -24,8 +24,7 @@ class TemporaryUrlParameters
         private readonly object $resource,
         private readonly int $ttl = 1800,
         private readonly ?string $sessionId = null,
-    ) {
-    }
+    ) {}
 
     public function getResource(): object
     {

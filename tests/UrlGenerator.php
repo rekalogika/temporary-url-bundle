@@ -51,9 +51,7 @@ class UrlGenerator implements UrlGeneratorInterface
     }
 
     #[\Override]
-    public function setContext(RequestContext $context): void
-    {
-    }
+    public function setContext(RequestContext $context): void {}
 
     #[\Override]
     public function getContext(): RequestContext
