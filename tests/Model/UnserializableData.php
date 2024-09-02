@@ -16,8 +16,9 @@ namespace Rekalogika\TemporaryUrl\Tests\Model;
 class UnserializableData
 {
     public function __construct(
-        private string $content,
-    ) {}
+        private readonly string $content,
+    ) {
+    }
 
     public function getContent(): string
     {

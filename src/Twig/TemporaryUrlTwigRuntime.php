@@ -23,8 +23,9 @@ use Twig\Extension\RuntimeExtensionInterface;
 final class TemporaryUrlTwigRuntime implements RuntimeExtensionInterface
 {
     public function __construct(
-        private TemporaryUrlGeneratorInterface $temporaryUrlGenerator,
-    ) {}
+        private readonly TemporaryUrlGeneratorInterface $temporaryUrlGenerator
+    ) {
+    }
 
     public function generateTemporaryUrl(
         object $object,

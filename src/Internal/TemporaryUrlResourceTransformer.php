@@ -23,7 +23,7 @@ class TemporaryUrlResourceTransformer
     /**
      * @var array<class-string,array{0:object,1:string}>
      */
-    private array $transformerMap;
+    private readonly array $transformerMap;
 
     /**
      * @param iterable<class-string,array{0:object,1:string}> $transformerMap

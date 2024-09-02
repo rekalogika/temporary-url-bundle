@@ -28,17 +28,17 @@ class TemporaryUrlManager
     /**
      * @var array<class-string,array{0:object,1:string}>
      */
-    private array $resourceToServerMap;
+    private readonly array $resourceToServerMap;
 
     /**
      * @param iterable<class-string,array{0:object,1:string}> $resourceToServerMap
      */
     public function __construct(
-        private CacheInterface $cache,
-        private TemporaryUrlResourceTransformer $resourceTransformer,
+        private readonly CacheInterface $cache,
+        private readonly TemporaryUrlResourceTransformer $resourceTransformer,
         iterable $resourceToServerMap,
-        private string $cachePrefix = 'temporary-url-',
-        private int $defaultTtl = 1800,
+        private readonly string $cachePrefix = 'temporary-url-',
+        private readonly int $defaultTtl = 1800,
     ) {
         if ($resourceToServerMap instanceof \Traversable) {
             $resourceToServerMap = iterator_to_array($resourceToServerMap);

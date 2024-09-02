@@ -20,10 +20,11 @@ namespace Rekalogika\TemporaryUrl;
 class Data
 {
     public function __construct(
-        private string $contentType,
-        private string $content,
-        private ?string $fileName,
-    ) {}
+        private readonly string $contentType,
+        private readonly string $content,
+        private readonly ?string $fileName,
+    ) {
+    }
 
     public function getContentType(): string
     {

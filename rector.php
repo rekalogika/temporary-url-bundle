@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Rector\CodeQuality\Rector\Identical\FlipTypeControlToUseExclusiveTypeRector;
 use Rector\CodingStyle\Rector\Catch_\CatchExceptionNameMatchingTypeRector;
 use Rector\Config\RectorConfig;
+use Rector\Php81\Rector\Property\ReadOnlyPropertyRector;
 use Rector\Php83\Rector\ClassMethod\AddOverrideAttributeToOverriddenMethodsRector;
 use Rector\Strict\Rector\Ternary\DisallowedShortTernaryRuleFixerRector;
 use Rector\ValueObject\PhpVersion;
@@ -12,7 +13,7 @@ use Rector\ValueObject\PhpVersion;
 return RectorConfig::configure()
     ->withPhpVersion(PhpVersion::PHP_83)
     ->withPaths([
-        __DIR__ . '/packages',
+        __DIR__ . '/src',
         __DIR__ . '/tests',
     ])
     ->withImportNames(importShortClasses: false)
@@ -27,11 +28,14 @@ return RectorConfig::configure()
         // symfonyCodeQuality: true,
         // doctrineCodeQuality: true,
     )
-    ->withPhpSets(php81: true)
-    // ->withRules([
-    //     AddOverrideAttributeToOverriddenMethodsRector::class,
-    // ])
+    // ->withPhpSets(php81: true)
+    ->withRules([
+        ReadOnlyPropertyRector::class,
+
+        // AddOverrideAttributeToOverriddenMethodsRector::class,
+    ])
     ->withSkip([
+
         // potential cognitive burden
         FlipTypeControlToUseExclusiveTypeRector::class,
 
