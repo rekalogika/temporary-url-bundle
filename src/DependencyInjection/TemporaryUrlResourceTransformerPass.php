@@ -64,7 +64,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
                     throw new \RuntimeException(sprintf(
                         'Invalid server service "%s": only named type in the return type of method "%s()" is supported',
                         $serviceId,
-                        $method
+                        $method,
                     ));
                 }
 
@@ -89,7 +89,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
                         'Invalid transformer service "%s": argument "$%s" of method "%s()" must have a type-hint corresponding to the resource class it serves.',
                         $serviceId,
                         $firstParameter->getName(),
-                        $method
+                        $method,
                     ));
                 }
 
@@ -103,7 +103,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
                                 'Invalid transformer service "%s": intersection type in argument "$%s" of method "%s()" is unsupported.',
                                 $serviceId,
                                 $firstParameter->getName(),
-                                $method
+                                $method,
                             ));
                         }
 
@@ -116,7 +116,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
                     'Invalid transformer service "%s": only named or union type in the argument "$%s" of method "%s()" is supported',
                     $serviceId,
                     $firstParameter->getName(),
-                    $method
+                    $method,
                 ));
             }
         }

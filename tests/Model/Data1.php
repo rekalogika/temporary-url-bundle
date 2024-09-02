@@ -17,8 +17,7 @@ class Data1
 {
     public function __construct(
         private string $content,
-    ) {
-    }
+    ) {}
 
     public function getContent(): string
     {

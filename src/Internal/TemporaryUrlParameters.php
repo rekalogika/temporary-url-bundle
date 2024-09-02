@@ -24,8 +24,7 @@ class TemporaryUrlParameters
         private object $resource,
         private int $ttl = 1800,
         private ?string $sessionId = null,
-    ) {
-    }
+    ) {}
 
     public function getResource(): object
     {

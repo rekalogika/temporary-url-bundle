@@ -34,7 +34,7 @@ class DataServer
         if ($fileName !== null) {
             $disposition = HeaderUtils::makeDisposition(
                 HeaderUtils::DISPOSITION_ATTACHMENT,
-                $fileName
+                $fileName,
             );
 
             $response->headers->set('Content-Disposition', $disposition);

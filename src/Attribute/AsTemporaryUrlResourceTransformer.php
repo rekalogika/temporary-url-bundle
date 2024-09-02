@@ -14,6 +14,4 @@ declare(strict_types=1);
 namespace Rekalogika\TemporaryUrl\Attribute;
 
 #[\Attribute(\Attribute::TARGET_CLASS | \Attribute::TARGET_METHOD)]
-class AsTemporaryUrlResourceTransformer
-{
-}
+class AsTemporaryUrlResourceTransformer {}

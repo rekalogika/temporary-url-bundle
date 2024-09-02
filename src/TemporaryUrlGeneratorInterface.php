@@ -32,6 +32,6 @@ interface TemporaryUrlGeneratorInterface
         object $resource,
         null|int|\DateInterval $ttl = null,
         bool $pinSession = false,
-        int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH
+        int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH,
     ): string;
 }

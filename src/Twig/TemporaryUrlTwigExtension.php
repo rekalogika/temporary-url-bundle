@@ -27,7 +27,7 @@ class TemporaryUrlTwigExtension extends AbstractExtension
         return [
             new TwigFilter(
                 'temporary_url',
-                [TemporaryUrlTwigRuntime::class, 'generateTemporaryUrl']
+                [TemporaryUrlTwigRuntime::class, 'generateTemporaryUrl'],
             ),
         ];
     }
@@ -38,7 +38,7 @@ class TemporaryUrlTwigExtension extends AbstractExtension
             new TwigFunction(
                 'temporary_url_autoexpire',
                 [$this, 'autoExpire'],
-                ['is_safe' => ['html']]
+                ['is_safe' => ['html']],
             ),
         ];
     }
