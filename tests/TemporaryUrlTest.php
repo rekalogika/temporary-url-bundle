@@ -32,10 +32,11 @@ class TemporaryUrlTest extends TestCase
     private ?ContainerInterface $container = null;
 
     #[\Override]
-    public function setUp(): void
+    protected function setUp(): void
     {
         $kernel = new Kernel();
         $kernel->boot();
+
         $this->container = $kernel->getContainer();
     }
 

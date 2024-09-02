@@ -118,6 +118,7 @@ class TemporaryUrlPass implements CompilerPassInterface
 
                         $urlDataClassToUrlServerMap[$type->getName()] = [$service, $method];
                     }
+
                     continue;
                 }
 

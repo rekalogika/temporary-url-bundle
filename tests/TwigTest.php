@@ -40,6 +40,7 @@ class TwigTest extends IntegrationTestCase
     {
         $kernel = new Kernel();
         $kernel->boot();
+
         $container = $kernel->getContainer();
         $temporaryUrlTwigRuntime = $container->get('test.' . TemporaryUrlTwigRuntime::class);
         $this->assertInstanceOf(TemporaryUrlTwigRuntime::class, $temporaryUrlTwigRuntime);

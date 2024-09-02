@@ -108,6 +108,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
 
                         $transformerMap[$type->getName()] = [$service, $method];
                     }
+
                     continue;
                 }
 
