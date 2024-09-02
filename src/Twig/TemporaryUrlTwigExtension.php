@@ -25,6 +25,7 @@ class TemporaryUrlTwigExtension extends AbstractExtension
     #[\Override]
     public function getFilters(): array
     {
+        /** @psalm-suppress InvalidArgument */
         return [
             new TwigFilter(
                 'temporary_url',
