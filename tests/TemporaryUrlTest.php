@@ -224,7 +224,7 @@ class TemporaryUrlTest extends TestCase
         $url2 = $temporaryUrlGenerator->generateUrl($data2);
 
         $this->expectException(ServerNotFoundException::class);
-        $url3 = $temporaryUrlGenerator->generateUrl($data3);
+        $temporaryUrlGenerator->generateUrl($data3);
 
         $this->assertStringStartsWith('/__temporary-url__/', $url1);
         $this->assertStringStartsWith('/__temporary-url__/', $url2);

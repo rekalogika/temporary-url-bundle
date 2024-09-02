@@ -18,7 +18,7 @@ return RectorConfig::configure()
     ])
     ->withImportNames(importShortClasses: false)
     ->withPreparedSets(
-        // deadCode: true,
+        deadCode: true,
         // codeQuality: true,
         // codingStyle: true,
         // typeDeclarations: true,

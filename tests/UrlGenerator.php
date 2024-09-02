@@ -58,8 +58,6 @@ class UrlGenerator implements UrlGeneratorInterface
     #[\Override]
     public function getContext(): RequestContext
     {
-        $requestContext = \Mockery::mock(RequestContext::class);
-
-        return $requestContext;
+        return \Mockery::mock(RequestContext::class);
     }
 }

@@ -33,8 +33,6 @@ class TemporaryUrlPass implements CompilerPassInterface
             ->findTaggedServiceIds('rekalogika.temporary_url.resource_server', true);
 
         foreach ($servers as $serviceId => $tags) {
-            /** @var array<string,array<string,string>> $tags */
-
             $r = $container->getReflectionClass($serviceId);
 
             if (null === $r) {

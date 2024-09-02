@@ -32,8 +32,6 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
             ->findTaggedServiceIds('rekalogika.temporary_url.resource_transformer', true);
 
         foreach ($transformers as $serviceId => $tags) {
-            /** @var array<string,array<string,string>> $tags */
-
             $r = $container->getReflectionClass($serviceId);
 
             if (null === $r) {

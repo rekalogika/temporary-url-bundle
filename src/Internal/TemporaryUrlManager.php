@@ -107,9 +107,6 @@ class TemporaryUrlManager
         return $result;
     }
 
-    /**
-     * @return callable
-     */
     public function getCallableFromTemporaryUrlData(
         TemporaryUrlParameters $temporaryUrlData,
     ): callable {
