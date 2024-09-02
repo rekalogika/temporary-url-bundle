@@ -68,7 +68,7 @@ class TemporaryUrlPass implements CompilerPassInterface
                     ));
                 }
 
-                if ($returnType->getName() != Response::class) {
+                if ($returnType->getName() !== Response::class) {
                     throw new \RuntimeException(sprintf(
                         'Invalid server service "%s": method "%s()" must return a "%s" instance',
                         $serviceId,

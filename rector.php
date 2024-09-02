@@ -19,7 +19,7 @@ return RectorConfig::configure()
     ->withImportNames(importShortClasses: false)
     ->withPreparedSets(
         deadCode: true,
-        // codeQuality: true,
+        codeQuality: true,
         // codingStyle: true,
         // typeDeclarations: true,
         // privatization: true,

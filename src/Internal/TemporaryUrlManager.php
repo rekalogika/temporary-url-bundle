@@ -78,7 +78,7 @@ class TemporaryUrlManager
 
     private function isObjectValid(object $resource): bool
     {
-        foreach ($this->resourceToServerMap as $class => $server) {
+        foreach (array_keys($this->resourceToServerMap) as $class) {
             if ($resource instanceof $class) {
                 return true;
             }

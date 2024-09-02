@@ -32,11 +32,7 @@ final class TemporaryUrlGenerator implements TemporaryUrlGeneratorInterface
         bool $pinSession = false,
         int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH,
     ): string {
-        if ($pinSession) {
-            $sessionId = $this->requestStack->getSession()->getId();
-        } else {
-            $sessionId = null;
-        }
+        $sessionId = $pinSession ? $this->requestStack->getSession()->getId() : null;
 
         $temporaryUrlResult = $this->temporaryUrlManager
             ->createTicket($resource, $ttl, $sessionId);
