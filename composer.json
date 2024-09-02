@@ -47,7 +47,8 @@
         "symfony/event-dispatcher": "^6.3 || ^7.0",
         "symfony/phpunit-bridge": "^6.3 || ^7.0",
         "psalm/plugin-mockery": "^1.1",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+        "rector/rector": "^1.2"
     },
     "suggest": {
         "twig/twig": "Use the 'temporary_url' filter to generate temporary URLs in Twig templates"
