@@ -21,11 +21,11 @@ return RectorConfig::configure()
         deadCode: true,
         codeQuality: true,
         codingStyle: true,
-        // typeDeclarations: true,
-        // privatization: true,
-        // instanceOf: true,
-        // strictBooleans: true,
-        // symfonyCodeQuality: true,
+        typeDeclarations: true,
+        privatization: true,
+        instanceOf: true,
+        strictBooleans: true,
+        symfonyCodeQuality: true,
         // doctrineCodeQuality: true,
     )
     ->withPhpSets(php81: true)

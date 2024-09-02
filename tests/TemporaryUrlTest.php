@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Rekalogika\TemporaryUrl\Tests;
 
+use Symfony\Component\HttpFoundation\Response;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Rekalogika\TemporaryUrl\Data;
@@ -97,7 +98,7 @@ class TemporaryUrlTest extends TestCase
         $controller = $this->getController();
         $response = $controller($ticket);
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
         $this->assertEquals('text/plain', $response->headers->get('Content-Type'));
         $this->assertEquals('foo', $response->getContent());
     }
@@ -127,7 +128,7 @@ class TemporaryUrlTest extends TestCase
         $controller = $this->getController();
         $response = $controller($ticket);
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
         $this->assertEquals('text/plain', $response->headers->get('Content-Type'));
         $this->assertEquals('foo', $response->getContent());
 
@@ -156,7 +157,7 @@ class TemporaryUrlTest extends TestCase
         $controller = $this->getController();
         $response = $controller($ticket);
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
         $this->assertEquals('text/plain', $response->headers->get('Content-Type'));
         $this->assertEquals('foo', $response->getContent());
 
@@ -187,7 +188,7 @@ class TemporaryUrlTest extends TestCase
         $controller = $this->getController();
         $response = $controller($ticket);
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
         $this->assertEquals('text/plain', $response->headers->get('Content-Type'));
         $this->assertEquals('foo', $response->getContent());
 
@@ -198,7 +199,7 @@ class TemporaryUrlTest extends TestCase
 
         $response = $secondaryController($ticket);
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
         $this->assertEquals('text/plain', $response->headers->get('Content-Type'));
         $this->assertEquals('foo', $response->getContent());
     }
