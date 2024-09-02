@@ -41,6 +41,7 @@ class TemporaryUrlPass implements CompilerPassInterface
 
             $service = $container->getDefinition($serviceId);
 
+            /** @var array<string,mixed> $tag */
             foreach ($tags as $tag) {
                 $method = $tag['method'] ?? null;
 
