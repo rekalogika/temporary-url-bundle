@@ -28,10 +28,8 @@ return RectorConfig::configure()
         // symfonyCodeQuality: true,
         // doctrineCodeQuality: true,
     )
-    // ->withPhpSets(php81: true)
+    ->withPhpSets(php81: true)
     ->withRules([
-        ReadOnlyPropertyRector::class,
-
         // AddOverrideAttributeToOverriddenMethodsRector::class,
     ])
     ->withSkip([

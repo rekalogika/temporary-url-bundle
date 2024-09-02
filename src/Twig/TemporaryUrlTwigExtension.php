@@ -37,8 +37,8 @@ class TemporaryUrlTwigExtension extends AbstractExtension
         return [
             new TwigFunction(
                 'temporary_url_autoexpire',
-                [$this, 'autoExpire'],
-                ['is_safe' => ['html']],
+                $this->autoExpire(...),
+                ['is_safe' => ['html']]
             ),
         ];
     }
