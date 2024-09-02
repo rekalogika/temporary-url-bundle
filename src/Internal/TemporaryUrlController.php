@@ -22,12 +22,13 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @internal
  */
-final class TemporaryUrlController
+final readonly class TemporaryUrlController
 {
     public function __construct(
-        private readonly TemporaryUrlManager $temporaryUrlManager,
-        private readonly RequestStack $requestStack,
-    ) {}
+        private TemporaryUrlManager $temporaryUrlManager,
+        private RequestStack $requestStack,
+    ) {
+    }
 
     public function __invoke(string $ticketid): Response
     {

@@ -17,13 +17,14 @@ use Rekalogika\TemporaryUrl\Internal\TemporaryUrlManager;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-final class TemporaryUrlGenerator implements TemporaryUrlGeneratorInterface
+final readonly class TemporaryUrlGenerator implements TemporaryUrlGeneratorInterface
 {
     public function __construct(
-        private readonly TemporaryUrlManager $temporaryUrlManager,
-        private readonly UrlGeneratorInterface $urlGenerator,
-        private readonly RequestStack $requestStack,
-    ) {}
+        private TemporaryUrlManager $temporaryUrlManager,
+        private UrlGeneratorInterface $urlGenerator,
+        private RequestStack $requestStack,
+    ) {
+    }
 
     #[\Override]
     public function generateUrl(
