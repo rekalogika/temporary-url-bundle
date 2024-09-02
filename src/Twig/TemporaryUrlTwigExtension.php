@@ -22,6 +22,7 @@ use Twig\TwigFunction;
  */
 class TemporaryUrlTwigExtension extends AbstractExtension
 {
+    #[\Override]
     public function getFilters(): array
     {
         return [
@@ -32,6 +33,7 @@ class TemporaryUrlTwigExtension extends AbstractExtension
         ];
     }
 
+    #[\Override]
     public function getFunctions(): array
     {
         return [

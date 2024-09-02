@@ -31,6 +31,7 @@ class TemporaryUrlTest extends TestCase
 {
     private ?ContainerInterface $container = null;
 
+    #[\Override]
     public function setUp(): void
     {
         $kernel = new Kernel();

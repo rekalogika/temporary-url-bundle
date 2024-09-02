@@ -24,6 +24,7 @@ class UrlGenerator implements UrlGeneratorInterface
     /**
      * @param array<array-key,mixed> $parameters
      */
+    #[\Override]
     public function generate(
         string $name,
         array $parameters = [],
@@ -49,8 +50,12 @@ class UrlGenerator implements UrlGeneratorInterface
         };
     }
 
-    public function setContext(RequestContext $context): void {}
+    #[\Override]
+    public function setContext(RequestContext $context): void
+    {
+    }
 
+    #[\Override]
     public function getContext(): RequestContext
     {
         $requestContext = \Mockery::mock(RequestContext::class);

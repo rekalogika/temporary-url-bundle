@@ -21,11 +21,13 @@ use Twig\Test\IntegrationTestCase;
 
 class TwigTest extends IntegrationTestCase
 {
+    #[\Override]
     protected function getFixturesDir(): string
     {
         return __DIR__ . '/Twig';
     }
 
+    #[\Override]
     protected function getExtensions(): iterable
     {
         return [
@@ -33,6 +35,7 @@ class TwigTest extends IntegrationTestCase
         ];
     }
 
+    #[\Override]
     protected function getRuntimeLoaders(): iterable
     {
         $kernel = new Kernel();

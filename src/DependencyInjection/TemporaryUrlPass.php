@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TemporaryUrlPass implements CompilerPassInterface
 {
+    #[\Override]
     public function process(ContainerBuilder $container): void
     {
         /**

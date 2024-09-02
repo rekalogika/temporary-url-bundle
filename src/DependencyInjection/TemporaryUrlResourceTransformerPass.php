@@ -20,6 +20,7 @@ use Symfony\Component\DependencyInjection\Definition;
 
 class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
 {
+    #[\Override]
     public function process(ContainerBuilder $container): void
     {
         /**

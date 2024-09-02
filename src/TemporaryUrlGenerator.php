@@ -25,6 +25,7 @@ final class TemporaryUrlGenerator implements TemporaryUrlGeneratorInterface
         private readonly RequestStack $requestStack,
     ) {}
 
+    #[\Override]
     public function generateUrl(
         object $resource,
         null|int|\DateInterval $ttl = null,

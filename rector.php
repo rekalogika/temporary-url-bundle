@@ -30,7 +30,7 @@ return RectorConfig::configure()
     )
     ->withPhpSets(php81: true)
     ->withRules([
-        // AddOverrideAttributeToOverriddenMethodsRector::class,
+        AddOverrideAttributeToOverriddenMethodsRector::class,
     ])
     ->withSkip([
 
