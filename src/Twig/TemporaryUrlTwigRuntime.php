@@ -23,9 +23,8 @@ use Twig\Extension\RuntimeExtensionInterface;
 final class TemporaryUrlTwigRuntime implements RuntimeExtensionInterface
 {
     public function __construct(
-        private TemporaryUrlGeneratorInterface $temporaryUrlGenerator
-    ) {
-    }
+        private TemporaryUrlGeneratorInterface $temporaryUrlGenerator,
+    ) {}
 
     public function generateTemporaryUrl(
         object $object,
@@ -37,7 +36,7 @@ final class TemporaryUrlTwigRuntime implements RuntimeExtensionInterface
             $object,
             $ttl,
             $pinSession,
-            $referenceType
+            $referenceType,
         );
     }
 }

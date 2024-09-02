@@ -23,8 +23,7 @@ class TemporaryUrlResult
     public function __construct(
         private string $ticketId,
         private int $expiration,
-    ) {
-    }
+    ) {}
 
     public function getTicketId(): string
     {

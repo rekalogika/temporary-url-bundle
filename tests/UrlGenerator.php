@@ -27,7 +27,7 @@ class UrlGenerator implements UrlGeneratorInterface
     public function generate(
         string $name,
         array $parameters = [],
-        int $referenceType = self::ABSOLUTE_PATH
+        int $referenceType = self::ABSOLUTE_PATH,
     ): string {
         if ($name !== 'rekalogika_temporary_url') {
             throw new \InvalidArgumentException('Unsupported route name');
@@ -49,9 +49,7 @@ class UrlGenerator implements UrlGeneratorInterface
         };
     }
 
-    public function setContext(RequestContext $context): void
-    {
-    }
+    public function setContext(RequestContext $context): void {}
 
     public function getContext(): RequestContext
     {

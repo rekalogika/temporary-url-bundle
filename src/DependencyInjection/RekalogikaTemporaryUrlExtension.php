@@ -31,7 +31,7 @@ class RekalogikaTemporaryUrlExtension extends Extension implements PrependExtens
     {
         $loader = new PhpFileLoader(
             $container,
-            new FileLocator(__DIR__ . '/../../config')
+            new FileLocator(__DIR__ . '/../../config'),
         );
 
         $loader->load('services.php');
@@ -51,7 +51,7 @@ class RekalogikaTemporaryUrlExtension extends Extension implements PrependExtens
             static function (
                 ChildDefinition $definition,
                 AsTemporaryUrlServer $attribute,
-                \Reflector $reflector
+                \Reflector $reflector,
             ): void {
                 if ($reflector instanceof \ReflectionMethod) {
                     $method = $reflector->name;
@@ -62,9 +62,9 @@ class RekalogikaTemporaryUrlExtension extends Extension implements PrependExtens
                 }
 
                 $definition->addTag('rekalogika.temporary_url.resource_server', [
-                    'method' => $method
+                    'method' => $method,
                 ]);
-            }
+            },
         );
 
         $container->registerAttributeForAutoconfiguration(
@@ -72,7 +72,7 @@ class RekalogikaTemporaryUrlExtension extends Extension implements PrependExtens
             static function (
                 ChildDefinition $definition,
                 AsTemporaryUrlResourceTransformer $attribute,
-                \Reflector $reflector
+                \Reflector $reflector,
             ): void {
                 if ($reflector instanceof \ReflectionMethod) {
                     $method = $reflector->name;
@@ -83,9 +83,9 @@ class RekalogikaTemporaryUrlExtension extends Extension implements PrependExtens
                 }
 
                 $definition->addTag('rekalogika.temporary_url.resource_transformer', [
-                    'method' => $method
+                    'method' => $method,
                 ]);
-            }
+            },
         );
     }
 

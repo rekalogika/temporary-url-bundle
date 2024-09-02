@@ -23,8 +23,7 @@ final class TemporaryUrlGenerator implements TemporaryUrlGeneratorInterface
         private readonly TemporaryUrlManager $temporaryUrlManager,
         private readonly UrlGeneratorInterface $urlGenerator,
         private readonly RequestStack $requestStack,
-    ) {
-    }
+    ) {}
 
     public function generateUrl(
         object $resource,
@@ -47,7 +46,7 @@ final class TemporaryUrlGenerator implements TemporaryUrlGeneratorInterface
                 'ticketid' => $temporaryUrlResult->getTicketId(),
                 'expiration' => $temporaryUrlResult->getExpiration(),
             ],
-            $referenceType
+            $referenceType,
         );
     }
 }

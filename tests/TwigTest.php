@@ -29,7 +29,7 @@ class TwigTest extends IntegrationTestCase
     protected function getExtensions(): iterable
     {
         return [
-            new TemporaryUrlTwigExtension()
+            new TemporaryUrlTwigExtension(),
         ];
     }
 
@@ -47,7 +47,7 @@ class TwigTest extends IntegrationTestCase
                 function () use ($temporaryUrlTwigRuntime): TemporaryUrlTwigRuntime {
                     return $temporaryUrlTwigRuntime;
                 },
-            ])
+            ]),
         ];
     }
 }

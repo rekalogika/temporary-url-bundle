@@ -41,11 +41,11 @@ class TemporaryUrlTest extends TestCase
     private function getTemporaryUrlGenerator(): TemporaryUrlGeneratorInterface
     {
         $temporaryUrlGenerator = $this->container
-            ?->get('test.'.TemporaryUrlGeneratorInterface::class);
+            ?->get('test.' . TemporaryUrlGeneratorInterface::class);
 
         $this->assertInstanceOf(
             TemporaryUrlGeneratorInterface::class,
-            $temporaryUrlGenerator
+            $temporaryUrlGenerator,
         );
 
         return $temporaryUrlGenerator;
@@ -54,11 +54,11 @@ class TemporaryUrlTest extends TestCase
     private function getController(): TemporaryUrlController
     {
         $controller = $this->container
-            ?->get('test.'.TemporaryUrlController::class);
+            ?->get('test.' . TemporaryUrlController::class);
 
         $this->assertInstanceOf(
             TemporaryUrlController::class,
-            $controller
+            $controller,
         );
 
         return $controller;
@@ -160,7 +160,7 @@ class TemporaryUrlTest extends TestCase
 
         // accessed from different session
 
-        $secondaryController = $this->container?->get(TemporaryUrlController::class.'.secondary');
+        $secondaryController = $this->container?->get(TemporaryUrlController::class . '.secondary');
         $this->assertInstanceOf(TemporaryUrlController::class, $secondaryController);
 
         $this->expectException(WrongSessionException::class);
@@ -191,7 +191,7 @@ class TemporaryUrlTest extends TestCase
 
         // accessed from different session
 
-        $secondaryController = $this->container?->get(TemporaryUrlController::class.'.secondary');
+        $secondaryController = $this->container?->get(TemporaryUrlController::class . '.secondary');
         $this->assertInstanceOf(TemporaryUrlController::class, $secondaryController);
 
         $response = $secondaryController($ticket);

@@ -13,6 +13,4 @@ declare(strict_types=1);
 
 namespace Rekalogika\TemporaryUrl\Exception;
 
-abstract class TemporaryUrlException extends \Exception
-{
-}
+abstract class TemporaryUrlException extends \Exception {}

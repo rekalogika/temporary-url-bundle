@@ -88,7 +88,7 @@ class TemporaryUrlManager
     }
 
     public function getTemporaryUrlDataFromTicketId(
-        string $ticketid
+        string $ticketid,
     ): TemporaryUrlParameters {
         $result = $this->cache->get($this->cachePrefix . $ticketid, null);
 
@@ -100,7 +100,7 @@ class TemporaryUrlManager
             throw new \UnexpectedValueException(sprintf(
                 'Unexpected temporary URL data: expected instance of "%s", got "%s"',
                 TemporaryUrlParameters::class,
-                \get_debug_type($result)
+                \get_debug_type($result),
             ));
         }
 
@@ -111,7 +111,7 @@ class TemporaryUrlManager
      * @return callable
      */
     public function getCallableFromTemporaryUrlData(
-        TemporaryUrlParameters $temporaryUrlData
+        TemporaryUrlParameters $temporaryUrlData,
     ): callable {
         $resource = $temporaryUrlData->getResource();
         $callable = null;
