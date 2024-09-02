@@ -24,10 +24,12 @@ class Kernel extends HttpKernelKernel
         parent::__construct('test', true);
     }
 
+    #[\Override]
     public function registerBundles(): iterable
     {
         yield new RekalogikaTemporaryUrlBundle();
     }
 
+    #[\Override]
     public function registerContainerConfiguration(LoaderInterface $loader) {}
 }

@@ -21,9 +21,9 @@ namespace Rekalogika\TemporaryUrl\Internal;
 class TemporaryUrlParameters
 {
     public function __construct(
-        private object $resource,
-        private int $ttl = 1800,
-        private ?string $sessionId = null,
+        private readonly object $resource,
+        private readonly int $ttl = 1800,
+        private readonly ?string $sessionId = null,
     ) {}
 
     public function getResource(): object

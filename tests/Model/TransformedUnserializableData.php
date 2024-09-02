@@ -16,7 +16,7 @@ namespace Rekalogika\TemporaryUrl\Tests\Model;
 class TransformedUnserializableData
 {
     public function __construct(
-        private string $content,
+        private readonly string $content,
     ) {}
 
     public function getContent(): string

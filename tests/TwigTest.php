@@ -21,11 +21,13 @@ use Twig\Test\IntegrationTestCase;
 
 class TwigTest extends IntegrationTestCase
 {
+    #[\Override]
     protected function getFixturesDir(): string
     {
         return __DIR__ . '/Twig';
     }
 
+    #[\Override]
     protected function getExtensions(): iterable
     {
         return [
@@ -33,10 +35,12 @@ class TwigTest extends IntegrationTestCase
         ];
     }
 
+    #[\Override]
     protected function getRuntimeLoaders(): iterable
     {
         $kernel = new Kernel();
         $kernel->boot();
+
         $container = $kernel->getContainer();
         $temporaryUrlTwigRuntime = $container->get('test.' . TemporaryUrlTwigRuntime::class);
         $this->assertInstanceOf(TemporaryUrlTwigRuntime::class, $temporaryUrlTwigRuntime);
@@ -44,9 +48,7 @@ class TwigTest extends IntegrationTestCase
         return [
             new FactoryRuntimeLoader([
                 TemporaryUrlTwigRuntime::class =>
-                function () use ($temporaryUrlTwigRuntime): TemporaryUrlTwigRuntime {
-                    return $temporaryUrlTwigRuntime;
-                },
+                fn(): TemporaryUrlTwigRuntime => $temporaryUrlTwigRuntime,
             ]),
         ];
     }

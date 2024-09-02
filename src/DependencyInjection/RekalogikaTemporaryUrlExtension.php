@@ -27,6 +27,7 @@ use Twig\Environment;
 
 class RekalogikaTemporaryUrlExtension extends Extension implements PrependExtensionInterface
 {
+    #[\Override]
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new PhpFileLoader(
@@ -89,6 +90,7 @@ class RekalogikaTemporaryUrlExtension extends Extension implements PrependExtens
         );
     }
 
+    #[\Override]
     public function prepend(ContainerBuilder $container): void
     {
         if (!$this->isAssetMapperAvailable($container)) {

@@ -20,6 +20,7 @@ use Symfony\Component\DependencyInjection\Definition;
 
 class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
 {
+    #[\Override]
     public function process(ContainerBuilder $container): void
     {
         /**
@@ -31,8 +32,6 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
             ->findTaggedServiceIds('rekalogika.temporary_url.resource_transformer', true);
 
         foreach ($transformers as $serviceId => $tags) {
-            /** @var array<string,array<string,string>> $tags */
-
             $r = $container->getReflectionClass($serviceId);
 
             if (null === $r) {
@@ -41,6 +40,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
 
             $service = $container->getDefinition($serviceId);
 
+            /** @var array<string,mixed> $tag */
             foreach ($tags as $tag) {
                 $method = $tag['method'] ?? null;
 
@@ -109,6 +109,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
 
                         $transformerMap[$type->getName()] = [$service, $method];
                     }
+
                     continue;
                 }
 

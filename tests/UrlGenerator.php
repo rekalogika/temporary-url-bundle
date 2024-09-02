@@ -24,6 +24,7 @@ class UrlGenerator implements UrlGeneratorInterface
     /**
      * @param array<array-key,mixed> $parameters
      */
+    #[\Override]
     public function generate(
         string $name,
         array $parameters = [],
@@ -36,7 +37,7 @@ class UrlGenerator implements UrlGeneratorInterface
         $ticketId = $parameters['ticketid'] ?? null;
         assert(is_string($ticketId));
 
-        if (!$ticketId) {
+        if ($ticketId === '' || $ticketId === '0') {
             throw new \InvalidArgumentException('Missing ticketid parameter');
         }
 
@@ -49,12 +50,12 @@ class UrlGenerator implements UrlGeneratorInterface
         };
     }
 
+    #[\Override]
     public function setContext(RequestContext $context): void {}
 
+    #[\Override]
     public function getContext(): RequestContext
     {
-        $requestContext = \Mockery::mock(RequestContext::class);
-
-        return $requestContext;
+        return \Mockery::mock(RequestContext::class);
     }
 }

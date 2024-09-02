@@ -22,8 +22,10 @@ use Twig\TwigFunction;
  */
 class TemporaryUrlTwigExtension extends AbstractExtension
 {
+    #[\Override]
     public function getFilters(): array
     {
+        /** @psalm-suppress InvalidArgument */
         return [
             new TwigFilter(
                 'temporary_url',
@@ -32,12 +34,13 @@ class TemporaryUrlTwigExtension extends AbstractExtension
         ];
     }
 
+    #[\Override]
     public function getFunctions(): array
     {
         return [
             new TwigFunction(
                 'temporary_url_autoexpire',
-                [$this, 'autoExpire'],
+                $this->autoExpire(...),
                 ['is_safe' => ['html']],
             ),
         ];

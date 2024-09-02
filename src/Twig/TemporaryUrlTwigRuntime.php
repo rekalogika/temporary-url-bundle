@@ -20,7 +20,7 @@ use Twig\Extension\RuntimeExtensionInterface;
 /**
  * Twig runtime for temporary URL
  */
-final class TemporaryUrlTwigRuntime implements RuntimeExtensionInterface
+final readonly class TemporaryUrlTwigRuntime implements RuntimeExtensionInterface
 {
     public function __construct(
         private TemporaryUrlGeneratorInterface $temporaryUrlGenerator,

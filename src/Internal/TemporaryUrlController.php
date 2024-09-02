@@ -22,11 +22,11 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @internal
  */
-final class TemporaryUrlController
+final readonly class TemporaryUrlController
 {
     public function __construct(
-        private readonly TemporaryUrlManager $temporaryUrlManager,
-        private readonly RequestStack $requestStack,
+        private TemporaryUrlManager $temporaryUrlManager,
+        private RequestStack $requestStack,
     ) {}
 
     public function __invoke(string $ticketid): Response
@@ -53,7 +53,7 @@ final class TemporaryUrlController
             throw new \UnexpectedValueException(sprintf(
                 'The callable must return an instance of "%s", "%s" returned',
                 Response::class,
-                \is_object($result) ? \get_class($result) : \gettype($result),
+                get_debug_type($result),
             ));
         }
 

@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TemporaryUrlPass implements CompilerPassInterface
 {
+    #[\Override]
     public function process(ContainerBuilder $container): void
     {
         /**
@@ -32,8 +33,6 @@ class TemporaryUrlPass implements CompilerPassInterface
             ->findTaggedServiceIds('rekalogika.temporary_url.resource_server', true);
 
         foreach ($servers as $serviceId => $tags) {
-            /** @var array<string,array<string,string>> $tags */
-
             $r = $container->getReflectionClass($serviceId);
 
             if (null === $r) {
@@ -42,6 +41,7 @@ class TemporaryUrlPass implements CompilerPassInterface
 
             $service = $container->getDefinition($serviceId);
 
+            /** @var array<string,mixed> $tag */
             foreach ($tags as $tag) {
                 $method = $tag['method'] ?? null;
 
@@ -69,7 +69,7 @@ class TemporaryUrlPass implements CompilerPassInterface
                     ));
                 }
 
-                if ($returnType->getName() != Response::class) {
+                if ($returnType->getName() !== Response::class) {
                     throw new \RuntimeException(sprintf(
                         'Invalid server service "%s": method "%s()" must return a "%s" instance',
                         $serviceId,
@@ -119,6 +119,7 @@ class TemporaryUrlPass implements CompilerPassInterface
 
                         $urlDataClassToUrlServerMap[$type->getName()] = [$service, $method];
                     }
+
                     continue;
                 }
 

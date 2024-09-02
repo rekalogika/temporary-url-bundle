@@ -21,8 +21,8 @@ namespace Rekalogika\TemporaryUrl\Internal;
 class TemporaryUrlResult
 {
     public function __construct(
-        private string $ticketId,
-        private int $expiration,
+        private readonly string $ticketId,
+        private readonly int $expiration,
     ) {}
 
     public function getTicketId(): string
