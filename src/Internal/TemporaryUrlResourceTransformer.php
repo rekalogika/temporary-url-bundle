@@ -18,7 +18,7 @@ namespace Rekalogika\TemporaryUrl\Internal;
  *
  * @internal
  */
-class TemporaryUrlResourceTransformer
+final class TemporaryUrlResourceTransformer
 {
     /**
      * @var array<class-string,array{0:object,1:string}>
@@ -42,7 +42,7 @@ class TemporaryUrlResourceTransformer
     {
         foreach ($this->transformerMap as $class => $transformer) {
             if ($input instanceof $class) {
-                if (!is_callable($transformer)) {
+                if (!\is_callable($transformer)) {
                     throw new \RuntimeException(sprintf('Invalid transformer: transformer for class "%s" is not callable.', $class));
                 }
 
