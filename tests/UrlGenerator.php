@@ -35,7 +35,7 @@ class UrlGenerator implements UrlGeneratorInterface
         }
 
         $ticketId = $parameters['ticketid'] ?? null;
-        assert(is_string($ticketId));
+        \assert(\is_string($ticketId));
 
         if ($ticketId === '' || $ticketId === '0') {
             throw new \InvalidArgumentException('Missing ticketid parameter');

@@ -44,7 +44,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
             foreach ($tags as $tag) {
                 $method = $tag['method'] ?? null;
 
-                if (!is_string($method)) {
+                if (!\is_string($method)) {
                     throw new \RuntimeException('Invalid definition: tag "method" is not a string.');
                 }
 
@@ -72,7 +72,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
 
                 $parameters = $reflectionMethod->getParameters();
 
-                if (count($parameters) != 1) {
+                if (\count($parameters) !== 1) {
                     throw new \RuntimeException(sprintf('Invalid transformer service "%s": method "%s()" must only have one argument.', $serviceId, $method));
                 }
 

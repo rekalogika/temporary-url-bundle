@@ -46,7 +46,7 @@ class TemporaryUrlTest extends TestCase
         $temporaryUrlGenerator = $this->container
             ?->get('test.' . TemporaryUrlGeneratorInterface::class);
 
-        $this->assertInstanceOf(
+        self::assertInstanceOf(
             TemporaryUrlGeneratorInterface::class,
             $temporaryUrlGenerator,
         );
@@ -59,7 +59,7 @@ class TemporaryUrlTest extends TestCase
         $controller = $this->container
             ?->get('test.' . TemporaryUrlController::class);
 
-        $this->assertInstanceOf(
+        self::assertInstanceOf(
             TemporaryUrlController::class,
             $controller,
         );
@@ -79,7 +79,7 @@ class TemporaryUrlTest extends TestCase
         $data = new Data('text/plain', 'foo', 'test.txt');
         $temporaryUrl = $temporaryUrlGenerator->generateUrl($data);
 
-        $this->assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
+        self::assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
     }
 
     public function testResponse(): void
@@ -89,18 +89,18 @@ class TemporaryUrlTest extends TestCase
         $data = new Data('text/plain', 'foo', 'test.txt');
         $temporaryUrl = $temporaryUrlGenerator->generateUrl($data);
 
-        $this->assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
+        self::assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
 
         $ticket = preg_replace('/^.*\//', '', $temporaryUrl);
-        $this->assertNotNull($ticket);
-        $this->assertStringMatchesFormat('%x', $ticket);
+        self::assertNotNull($ticket);
+        self::assertStringMatchesFormat('%x', $ticket);
 
         $controller = $this->getController();
         $response = $controller($ticket);
 
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
-        $this->assertEquals('text/plain', $response->headers->get('Content-Type'));
-        $this->assertEquals('foo', $response->getContent());
+        self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        self::assertEquals('text/plain', $response->headers->get('Content-Type'));
+        self::assertEquals('foo', $response->getContent());
     }
 
     public function testInvalidTicket(): void
@@ -119,18 +119,18 @@ class TemporaryUrlTest extends TestCase
         $data = new Data('text/plain', 'foo', 'test.txt');
         $temporaryUrl = $temporaryUrlGenerator->generateUrl($data, 2);
 
-        $this->assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
+        self::assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
 
         $ticket = preg_replace('/^.*\//', '', $temporaryUrl);
-        $this->assertNotNull($ticket);
-        $this->assertStringMatchesFormat('%x', $ticket);
+        self::assertNotNull($ticket);
+        self::assertStringMatchesFormat('%x', $ticket);
 
         $controller = $this->getController();
         $response = $controller($ticket);
 
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
-        $this->assertEquals('text/plain', $response->headers->get('Content-Type'));
-        $this->assertEquals('foo', $response->getContent());
+        self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        self::assertEquals('text/plain', $response->headers->get('Content-Type'));
+        self::assertEquals('foo', $response->getContent());
 
         sleep(2);
 
@@ -146,25 +146,25 @@ class TemporaryUrlTest extends TestCase
         $data = new Data('text/plain', 'foo', 'test.txt');
         $temporaryUrl = $temporaryUrlGenerator->generateUrl($data, null, true);
 
-        $this->assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
+        self::assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
 
         $ticket = preg_replace('/^.*\//', '', $temporaryUrl);
-        $this->assertNotNull($ticket);
-        $this->assertStringMatchesFormat('%x', $ticket);
+        self::assertNotNull($ticket);
+        self::assertStringMatchesFormat('%x', $ticket);
 
         // accessed from the same session
 
         $controller = $this->getController();
         $response = $controller($ticket);
 
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
-        $this->assertEquals('text/plain', $response->headers->get('Content-Type'));
-        $this->assertEquals('foo', $response->getContent());
+        self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        self::assertEquals('text/plain', $response->headers->get('Content-Type'));
+        self::assertEquals('foo', $response->getContent());
 
         // accessed from different session
 
         $secondaryController = $this->container?->get(TemporaryUrlController::class . '.secondary');
-        $this->assertInstanceOf(TemporaryUrlController::class, $secondaryController);
+        self::assertInstanceOf(TemporaryUrlController::class, $secondaryController);
 
         $this->expectException(WrongSessionException::class);
         $secondaryController($ticket);
@@ -177,31 +177,31 @@ class TemporaryUrlTest extends TestCase
         $data = new Data('text/plain', 'foo', 'test.txt');
         $temporaryUrl = $temporaryUrlGenerator->generateUrl($data, null, false);
 
-        $this->assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
+        self::assertStringStartsWith('/__temporary-url__/', $temporaryUrl);
 
         $ticket = preg_replace('/^.*\//', '', $temporaryUrl);
-        $this->assertNotNull($ticket);
-        $this->assertStringMatchesFormat('%x', $ticket);
+        self::assertNotNull($ticket);
+        self::assertStringMatchesFormat('%x', $ticket);
 
         // accessed from the same session
 
         $controller = $this->getController();
         $response = $controller($ticket);
 
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
-        $this->assertEquals('text/plain', $response->headers->get('Content-Type'));
-        $this->assertEquals('foo', $response->getContent());
+        self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        self::assertEquals('text/plain', $response->headers->get('Content-Type'));
+        self::assertEquals('foo', $response->getContent());
 
         // accessed from different session
 
         $secondaryController = $this->container?->get(TemporaryUrlController::class . '.secondary');
-        $this->assertInstanceOf(TemporaryUrlController::class, $secondaryController);
+        self::assertInstanceOf(TemporaryUrlController::class, $secondaryController);
 
         $response = $secondaryController($ticket);
 
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
-        $this->assertEquals('text/plain', $response->headers->get('Content-Type'));
-        $this->assertEquals('foo', $response->getContent());
+        self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        self::assertEquals('text/plain', $response->headers->get('Content-Type'));
+        self::assertEquals('foo', $response->getContent());
     }
 
     public function testDataWithoutServer(): void
@@ -228,8 +228,8 @@ class TemporaryUrlTest extends TestCase
         $this->expectException(ServerNotFoundException::class);
         $temporaryUrlGenerator->generateUrl($data3);
 
-        $this->assertStringStartsWith('/__temporary-url__/', $url1);
-        $this->assertStringStartsWith('/__temporary-url__/', $url2);
+        self::assertStringStartsWith('/__temporary-url__/', $url1);
+        self::assertStringStartsWith('/__temporary-url__/', $url2);
     }
 
     public function testUnserializableData(): void
@@ -237,6 +237,6 @@ class TemporaryUrlTest extends TestCase
         $temporaryUrlGenerator = $this->getTemporaryUrlGenerator();
         $data = new UnserializableData('foo');
         $url = $temporaryUrlGenerator->generateUrl($data, null, false);
-        $this->assertStringStartsWith('/__temporary-url__/', $url);
+        self::assertStringStartsWith('/__temporary-url__/', $url);
     }
 }

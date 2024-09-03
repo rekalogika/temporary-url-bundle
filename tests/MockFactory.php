@@ -31,7 +31,7 @@ class MockFactory
     {
         $requestStack = \Mockery::mock(RequestStack::class);
 
-        $sessionId = \bin2hex(\random_bytes(16));
+        $sessionId = bin2hex(random_bytes(16));
 
         $requestStack->shouldReceive('getSession')
             ->andReturn(self::createSession($sessionId));

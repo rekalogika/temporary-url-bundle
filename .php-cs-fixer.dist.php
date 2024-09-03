@@ -7,8 +7,9 @@ $finder = PhpCsFixer\Finder::create()
 $config = new PhpCsFixer\Config();
 
 return $config->setRules([
-    '@PER-CS2.0' => true,
+    '@PhpCsFixer:risky' => true,
     'declare_strict_types' => true,
+    'php_unit_strict' => false,
     'header_comment' => [
         'header' => <<<EOF
 This file is part of rekalogika/temporary-url-bundle package.
