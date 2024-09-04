@@ -50,7 +50,7 @@ final readonly class TemporaryUrlController
         $result = \call_user_func($callable, $temporaryUrlData->getResource());
 
         if (!$result instanceof Response) {
-            throw new \UnexpectedValueException(sprintf(
+            throw new \UnexpectedValueException(\sprintf(
                 'The callable must return an instance of "%s", "%s" returned',
                 Response::class,
                 get_debug_type($result),

@@ -24,7 +24,7 @@ class WrongSessionException extends TemporaryUrlException
         string $sessionId,
         \Throwable $previous = null,
     ) {
-        $message = sprintf('The ticket "%s" is only valid with session ID "%s"', $ticketId, $sessionId);
+        $message = \sprintf('The ticket "%s" is only valid with session ID "%s"', $ticketId, $sessionId);
 
         parent::__construct($message, 0, $previous);
     }

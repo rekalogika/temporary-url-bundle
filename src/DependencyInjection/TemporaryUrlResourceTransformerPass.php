@@ -35,7 +35,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
             $r = $container->getReflectionClass($serviceId);
 
             if (null === $r) {
-                throw new \RuntimeException(sprintf('Invalid service: class "%s" does not exist.', $serviceId));
+                throw new \RuntimeException(\sprintf('Invalid service: class "%s" does not exist.', $serviceId));
             }
 
             $service = $container->getDefinition($serviceId);
@@ -44,7 +44,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
             foreach ($tags as $tag) {
                 $method = $tag['method'] ?? null;
 
-                if (!is_string($method)) {
+                if (!\is_string($method)) {
                     throw new \RuntimeException('Invalid definition: tag "method" is not a string.');
                 }
 
@@ -53,7 +53,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
                 $reflectionMethod = $r->getMethod($method);
 
                 if (!$reflectionMethod->isPublic()) {
-                    throw new \RuntimeException(sprintf('Invalid definition: method "%s" in service ID "%s" is not public.', $method, $serviceId));
+                    throw new \RuntimeException(\sprintf('Invalid definition: method "%s" in service ID "%s" is not public.', $method, $serviceId));
                 }
 
                 // return type checking
@@ -61,7 +61,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
                 $returnType = $reflectionMethod->getReturnType();
 
                 if (!$returnType instanceof \ReflectionNamedType) {
-                    throw new \RuntimeException(sprintf(
+                    throw new \RuntimeException(\sprintf(
                         'Invalid server service "%s": only named type in the return type of method "%s()" is supported',
                         $serviceId,
                         $method,
@@ -72,20 +72,20 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
 
                 $parameters = $reflectionMethod->getParameters();
 
-                if (count($parameters) != 1) {
-                    throw new \RuntimeException(sprintf('Invalid transformer service "%s": method "%s()" must only have one argument.', $serviceId, $method));
+                if (\count($parameters) != 1) {
+                    throw new \RuntimeException(\sprintf('Invalid transformer service "%s": method "%s()" must only have one argument.', $serviceId, $method));
                 }
 
                 $firstParameter = $parameters[0] ?? null;
 
                 if (!$firstParameter) {
-                    throw new \RuntimeException(sprintf('Invalid transformer service "%s": method "%s()" must have one argument.', $serviceId, $method));
+                    throw new \RuntimeException(\sprintf('Invalid transformer service "%s": method "%s()" must have one argument.', $serviceId, $method));
                 }
 
                 $type = $firstParameter->getType();
 
                 if (!$type) {
-                    throw new \RuntimeException(sprintf(
+                    throw new \RuntimeException(\sprintf(
                         'Invalid transformer service "%s": argument "$%s" of method "%s()" must have a type-hint corresponding to the resource class it serves.',
                         $serviceId,
                         $firstParameter->getName(),
@@ -99,7 +99,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
                 } elseif ($type instanceof \ReflectionUnionType) {
                     foreach ($type->getTypes() as $type) {
                         if (!$type instanceof \ReflectionNamedType) {
-                            throw new \RuntimeException(sprintf(
+                            throw new \RuntimeException(\sprintf(
                                 'Invalid transformer service "%s": intersection type in argument "$%s" of method "%s()" is unsupported.',
                                 $serviceId,
                                 $firstParameter->getName(),
@@ -113,7 +113,7 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
                     continue;
                 }
 
-                throw new \RuntimeException(sprintf(
+                throw new \RuntimeException(\sprintf(
                     'Invalid transformer service "%s": only named or union type in the argument "$%s" of method "%s()" is supported',
                     $serviceId,
                     $firstParameter->getName(),

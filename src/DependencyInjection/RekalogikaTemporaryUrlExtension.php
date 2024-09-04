@@ -59,7 +59,7 @@ class RekalogikaTemporaryUrlExtension extends Extension implements PrependExtens
                 } elseif ($reflector instanceof \ReflectionClass) {
                     $method = '__invoke';
                 } else {
-                    throw new \InvalidArgumentException(sprintf('Invalid attribute usage: "%s" can only be applied to methods or classes.', AsTemporaryUrlServer::class));
+                    throw new \InvalidArgumentException(\sprintf('Invalid attribute usage: "%s" can only be applied to methods or classes.', AsTemporaryUrlServer::class));
                 }
 
                 $definition->addTag('rekalogika.temporary_url.resource_server', [
@@ -80,7 +80,7 @@ class RekalogikaTemporaryUrlExtension extends Extension implements PrependExtens
                 } elseif ($reflector instanceof \ReflectionClass) {
                     $method = '__invoke';
                 } else {
-                    throw new \InvalidArgumentException(sprintf('Invalid attribute usage: "%s" can only be applied to methods or classes.', AsTemporaryUrlResourceTransformer::class));
+                    throw new \InvalidArgumentException(\sprintf('Invalid attribute usage: "%s" can only be applied to methods or classes.', AsTemporaryUrlResourceTransformer::class));
                 }
 
                 $definition->addTag('rekalogika.temporary_url.resource_transformer', [

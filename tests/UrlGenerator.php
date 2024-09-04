@@ -35,13 +35,13 @@ class UrlGenerator implements UrlGeneratorInterface
         }
 
         $ticketId = $parameters['ticketid'] ?? null;
-        assert(is_string($ticketId));
+        \assert(\is_string($ticketId));
 
         if ($ticketId === '' || $ticketId === '0') {
             throw new \InvalidArgumentException('Missing ticketid parameter');
         }
 
-        return match($referenceType) {
+        return match ($referenceType) {
             self::ABSOLUTE_PATH => '/__temporary-url__/' . $ticketId,
             self::ABSOLUTE_URL => 'https://example.com/__temporary-url__/' . $ticketId,
             self::NETWORK_PATH => '//example.com/__temporary-url__/' . $ticketId,

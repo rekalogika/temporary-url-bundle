@@ -42,8 +42,8 @@ class TemporaryUrlResourceTransformer
     {
         foreach ($this->transformerMap as $class => $transformer) {
             if ($input instanceof $class) {
-                if (!is_callable($transformer)) {
-                    throw new \RuntimeException(sprintf('Invalid transformer: transformer for class "%s" is not callable.', $class));
+                if (!\is_callable($transformer)) {
+                    throw new \RuntimeException(\sprintf('Invalid transformer: transformer for class "%s" is not callable.', $class));
                 }
 
                 /** @var object */

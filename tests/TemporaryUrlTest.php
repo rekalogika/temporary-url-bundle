@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Rekalogika\TemporaryUrl\Tests;
 
-use Symfony\Component\HttpFoundation\Response;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Rekalogika\TemporaryUrl\Data;
@@ -25,8 +24,8 @@ use Rekalogika\TemporaryUrl\TemporaryUrlGeneratorInterface;
 use Rekalogika\TemporaryUrl\Tests\Model\Data1;
 use Rekalogika\TemporaryUrl\Tests\Model\Data2;
 use Rekalogika\TemporaryUrl\Tests\Model\Data3;
-use Rekalogika\TemporaryUrl\Tests\Model\DataServer;
 use Rekalogika\TemporaryUrl\Tests\Model\UnserializableData;
+use Symfony\Component\HttpFoundation\Response;
 
 class TemporaryUrlTest extends TestCase
 {

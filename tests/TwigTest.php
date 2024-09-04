@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Rekalogika\TemporaryUrl\Tests;
 
-use Rekalogika\TemporaryUrl\Tests\Kernel;
 use Rekalogika\TemporaryUrl\Twig\TemporaryUrlTwigExtension;
 use Rekalogika\TemporaryUrl\Twig\TemporaryUrlTwigRuntime;
 use Twig\RuntimeLoader\FactoryRuntimeLoader;
