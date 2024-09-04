@@ -18,7 +18,7 @@ namespace Rekalogika\TemporaryUrl\Internal;
  *
  * @internal
  */
-final class TemporaryUrlParameters
+class TemporaryUrlParameters
 {
     public function __construct(
         private readonly object $resource,
