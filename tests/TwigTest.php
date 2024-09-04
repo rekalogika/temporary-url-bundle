@@ -43,12 +43,12 @@ class TwigTest extends IntegrationTestCase
 
         $container = $kernel->getContainer();
         $temporaryUrlTwigRuntime = $container->get('test.' . TemporaryUrlTwigRuntime::class);
-        self::assertInstanceOf(TemporaryUrlTwigRuntime::class, $temporaryUrlTwigRuntime);
+        $this->assertInstanceOf(TemporaryUrlTwigRuntime::class, $temporaryUrlTwigRuntime);
 
         return [
             new FactoryRuntimeLoader([
                 TemporaryUrlTwigRuntime::class =>
-                static fn(): TemporaryUrlTwigRuntime => $temporaryUrlTwigRuntime,
+                fn(): TemporaryUrlTwigRuntime => $temporaryUrlTwigRuntime,
             ]),
         ];
     }
