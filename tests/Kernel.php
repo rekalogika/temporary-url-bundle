@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Rekalogika\TemporaryUrl\Tests;
 
+use Rekalogika\TemporaryUrl\RekalogikaTemporaryUrlBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel as HttpKernelKernel;
-use Rekalogika\TemporaryUrl\RekalogikaTemporaryUrlBundle;
 
 class Kernel extends HttpKernelKernel
 {

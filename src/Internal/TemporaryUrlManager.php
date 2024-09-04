@@ -16,7 +16,6 @@ namespace Rekalogika\TemporaryUrl\Internal;
 use Psr\SimpleCache\CacheInterface;
 use Rekalogika\TemporaryUrl\Exception\ServerNotFoundException;
 use Rekalogika\TemporaryUrl\Exception\TicketNotFoundException;
-use Rekalogika\TemporaryUrl\Internal\TemporaryUrlParameters;
 
 /**
  * Manages temporary URLS
@@ -62,9 +61,9 @@ class TemporaryUrlManager
             ? (int) $ttl->format('%s')
             : ($ttl ?? $this->defaultTtl);
 
-        $expiration = \time() + $ttl - 10;
+        $expiration = time() + $ttl - 10;
 
-        $ticketid = \bin2hex(\random_bytes(16));
+        $ticketid = bin2hex(random_bytes(16));
         $temporaryUrlData = new TemporaryUrlParameters($resource, $ttl, $sessionId);
 
         $this->cache->set(
@@ -97,10 +96,10 @@ class TemporaryUrlManager
         }
 
         if (!$result instanceof TemporaryUrlParameters) {
-            throw new \UnexpectedValueException(sprintf(
+            throw new \UnexpectedValueException(\sprintf(
                 'Unexpected temporary URL data: expected instance of "%s", got "%s"',
                 TemporaryUrlParameters::class,
-                \get_debug_type($result),
+                get_debug_type($result),
             ));
         }
 

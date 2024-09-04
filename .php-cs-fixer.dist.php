@@ -8,7 +8,21 @@ $config = new PhpCsFixer\Config();
 
 return $config->setRules([
     '@PER-CS2.0' => true,
+    '@PER-CS2.0:risky' => true,
+    'fully_qualified_strict_types' => true,
+    'global_namespace_import' => [
+        'import_classes' => false,
+        'import_constants' => false,
+        'import_functions' => false,
+    ],
+    'no_unneeded_import_alias' => true,
+    'no_unused_imports' => true,
+    'ordered_imports' => [
+        'sort_algorithm' => 'alpha',
+        'imports_order' => ['class', 'function', 'const']
+    ],
     'declare_strict_types' => true,
+    'native_function_invocation' => ['include' => ['@compiler_optimized']],
     'header_comment' => [
         'header' => <<<EOF
 This file is part of rekalogika/temporary-url-bundle package.
