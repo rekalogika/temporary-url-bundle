@@ -21,7 +21,7 @@ class TicketNotFoundException extends TemporaryUrlException
 {
     public function __construct(
         string $ticketId,
-        \Throwable $previous = null,
+        ?\Throwable $previous = null,
     ) {
         $message = \sprintf('Ticket with id "%s" not found', $ticketId);
 

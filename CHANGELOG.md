@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.0
+
+* feat: PHP 8.4 compatibility
+
 ## 1.5.0
 
 * build: add dependabot config

@@ -22,7 +22,7 @@ class WrongSessionException extends TemporaryUrlException
     public function __construct(
         string $ticketId,
         string $sessionId,
-        \Throwable $previous = null,
+        ?\Throwable $previous = null,
     ) {
         $message = \sprintf('The ticket "%s" is only valid with session ID "%s"', $ticketId, $sessionId);
 
