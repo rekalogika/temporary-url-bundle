@@ -24,7 +24,7 @@
         "@hotwired/stimulus": "^3.0"
     },
     "devDependencies": {
-        "@babel/cli": "^7.12",
+        "@babel/cli": "^7.25",
         "@babel/core": "^7.12",
         "@babel/plugin-transform-class-properties": "^7.24.1",
         "@babel/preset-env": "^7.22.20",
