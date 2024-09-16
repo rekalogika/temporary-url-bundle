@@ -24,7 +24,7 @@ class ServerNotFoundException extends TemporaryUrlException
      */
     public function __construct(
         string $resourceClass,
-        \Throwable $previous = null,
+        ?\Throwable $previous = null,
     ) {
         $message = \sprintf('There is no server to serve the resource class "%s".', $resourceClass);
 
