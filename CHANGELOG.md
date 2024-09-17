@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.1
+
+* deps: update javascript dependencies
+
 ## 1.6.0
 
 * feat: PHP 8.4 compatibility
