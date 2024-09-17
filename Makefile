@@ -1,6 +1,10 @@
 .PHONY: test
 test: phpstan psalm phpunit
 
+.PHONY: js
+js:
+	cd assets && npm update && npm run build
+
 .PHONY: phpstan
 phpstan:
 	vendor/bin/phpstan analyse
