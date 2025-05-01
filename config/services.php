@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-use Psr\SimpleCache\CacheInterface;
+use Psr\Cache\CacheItemPoolInterface;
 use Rekalogika\TemporaryUrl\DataServer;
 use Rekalogika\TemporaryUrl\Internal\TemporaryUrlController;
 use Rekalogika\TemporaryUrl\TemporaryUrlGenerator;
@@ -21,6 +21,7 @@ use Rekalogika\TemporaryUrl\Internal\TemporaryUrlResourceTransformer;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
@@ -28,7 +29,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $services->set(TemporaryUrlManager::class)
         ->args([
-            service(CacheInterface::class),
+            service(CacheItemPoolInterface::class),
             service(TemporaryUrlResourceTransformer::class),
         ]);
 

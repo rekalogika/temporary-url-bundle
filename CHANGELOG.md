@@ -1,11 +1,12 @@
 # Changelog
 
-## 1.6.2
+## 1.7.0
 
 * test: fix twig test deprecations
 * test: update phpstan & psalm
 * deps: update js deps
 * chore: rector run
+* deps: remove dependency on `rekalogika/psr-16-simple-cache-bundle`
 
 ## 1.6.1
 

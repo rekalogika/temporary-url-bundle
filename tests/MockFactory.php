@@ -13,18 +13,17 @@ declare(strict_types=1);
 
 namespace Rekalogika\TemporaryUrl\Tests;
 
-use Psr\SimpleCache\CacheInterface;
+use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
-use Symfony\Component\Cache\Psr16Cache;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 final class MockFactory
 {
-    public static function createCache(): CacheInterface
+    public static function createCache(): CacheItemPoolInterface
     {
-        return new Psr16Cache(new ArrayAdapter());
+        return new ArrayAdapter();
     }
 
     public static function createRequestStack(): RequestStack

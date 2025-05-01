@@ -13,9 +13,11 @@ declare(strict_types=1);
 
 namespace Rekalogika\TemporaryUrl\Internal;
 
+use Psr\Cache\CacheItemPoolInterface;
 use Psr\SimpleCache\CacheInterface;
 use Rekalogika\TemporaryUrl\Exception\ServerNotFoundException;
 use Rekalogika\TemporaryUrl\Exception\TicketNotFoundException;
+use Symfony\Component\Cache\Psr16Cache;
 
 /**
  * Manages temporary URLS
@@ -29,11 +31,13 @@ final readonly class TemporaryUrlManager
      */
     private array $resourceToServerMap;
 
+    private CacheInterface $cache;
+
     /**
      * @param iterable<class-string,array{0:object,1:string}> $resourceToServerMap
      */
     public function __construct(
-        private CacheInterface $cache,
+        CacheItemPoolInterface $cache,
         private TemporaryUrlResourceTransformer $resourceTransformer,
         iterable $resourceToServerMap,
         private string $cachePrefix = 'temporary-url-',
@@ -44,6 +48,7 @@ final readonly class TemporaryUrlManager
         }
 
         $this->resourceToServerMap = $resourceToServerMap;
+        $this->cache = new Psr16Cache($cache);
     }
 
     public function createTicket(
