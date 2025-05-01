@@ -22,22 +22,22 @@ use Rekalogika\TemporaryUrl\Exception\TicketNotFoundException;
  *
  * @internal
  */
-final class TemporaryUrlManager
+final readonly class TemporaryUrlManager
 {
     /**
      * @var array<class-string,array{0:object,1:string}>
      */
-    private readonly array $resourceToServerMap;
+    private array $resourceToServerMap;
 
     /**
      * @param iterable<class-string,array{0:object,1:string}> $resourceToServerMap
      */
     public function __construct(
-        private readonly CacheInterface $cache,
-        private readonly TemporaryUrlResourceTransformer $resourceTransformer,
+        private CacheInterface $cache,
+        private TemporaryUrlResourceTransformer $resourceTransformer,
         iterable $resourceToServerMap,
-        private readonly string $cachePrefix = 'temporary-url-',
-        private readonly int $defaultTtl = 1800,
+        private string $cachePrefix = 'temporary-url-',
+        private int $defaultTtl = 1800,
     ) {
         if ($resourceToServerMap instanceof \Traversable) {
             $resourceToServerMap = iterator_to_array($resourceToServerMap);

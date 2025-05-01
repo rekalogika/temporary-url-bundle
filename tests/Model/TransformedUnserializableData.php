@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Rekalogika\TemporaryUrl\Tests\Model;
 
-final class TransformedUnserializableData
+final readonly class TransformedUnserializableData
 {
     public function __construct(
-        private readonly string $content,
+        private string $content,
     ) {}
 
     public function getContent(): string

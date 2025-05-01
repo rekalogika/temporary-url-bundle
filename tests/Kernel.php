@@ -31,5 +31,5 @@ final class Kernel extends HttpKernelKernel
     }
 
     #[\Override]
-    public function registerContainerConfiguration(LoaderInterface $loader) {}
+    public function registerContainerConfiguration(LoaderInterface $loader): void {}
 }

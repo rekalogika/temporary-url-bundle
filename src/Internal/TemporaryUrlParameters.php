@@ -18,12 +18,12 @@ namespace Rekalogika\TemporaryUrl\Internal;
  *
  * @internal
  */
-final class TemporaryUrlParameters
+final readonly class TemporaryUrlParameters
 {
     public function __construct(
-        private readonly object $resource,
-        private readonly int $ttl = 1800,
-        private readonly ?string $sessionId = null,
+        private object $resource,
+        private int $ttl = 1800,
+        private ?string $sessionId = null,
     ) {}
 
     public function getResource(): object

@@ -18,12 +18,12 @@ namespace Rekalogika\TemporaryUrl\Internal;
  *
  * @internal
  */
-final class TemporaryUrlResourceTransformer
+final readonly class TemporaryUrlResourceTransformer
 {
     /**
      * @var array<class-string,array{0:object,1:string}>
      */
-    private readonly array $transformerMap;
+    private array $transformerMap;
 
     /**
      * @param iterable<class-string,array{0:object,1:string}> $transformerMap

@@ -17,12 +17,12 @@ namespace Rekalogika\TemporaryUrl;
  * A resource object that can be used to generate a temporary URL. Serves as an
  * example on how to implement a resource.
  */
-final class Data
+final readonly class Data
 {
     public function __construct(
-        private readonly string $contentType,
-        private readonly string $content,
-        private readonly ?string $fileName,
+        private string $contentType,
+        private string $content,
+        private ?string $fileName,
     ) {}
 
     public function getContentType(): string
