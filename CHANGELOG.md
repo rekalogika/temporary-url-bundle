@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.6.2
+## 1.7.0
 
 * test: fix twig test deprecations
 * test: update phpstan & psalm
