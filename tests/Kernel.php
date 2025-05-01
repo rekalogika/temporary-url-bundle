@@ -17,7 +17,7 @@ use Rekalogika\TemporaryUrl\RekalogikaTemporaryUrlBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel as HttpKernelKernel;
 
-class Kernel extends HttpKernelKernel
+final class Kernel extends HttpKernelKernel
 {
     public function __construct()
     {

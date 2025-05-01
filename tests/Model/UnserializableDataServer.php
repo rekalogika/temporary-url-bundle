@@ -17,7 +17,7 @@ use Rekalogika\TemporaryUrl\Attribute\AsTemporaryUrlResourceTransformer;
 use Rekalogika\TemporaryUrl\Attribute\AsTemporaryUrlServer;
 use Symfony\Component\HttpFoundation\Response;
 
-class UnserializableDataServer
+final class UnserializableDataServer
 {
     #[AsTemporaryUrlServer]
     public function serve(TransformedUnserializableData $data): Response

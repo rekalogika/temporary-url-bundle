@@ -19,7 +19,7 @@ use Symfony\Component\Routing\RequestContext;
 /**
  * Mock URL generator
  */
-class UrlGenerator implements UrlGeneratorInterface
+final class UrlGenerator implements UrlGeneratorInterface
 {
     /**
      * @param array<array-key,mixed> $parameters

@@ -20,4 +20,12 @@
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin" />
         <pluginClass class="Psalm\MockeryPlugin\Plugin" />
     </plugins>
+
+    <issueHandlers>
+        <MissingOverrideAttribute>
+            <errorLevel type="suppress">
+                <file name="tests/TwigTest.php" />
+            </errorLevel>
+        </MissingOverrideAttribute>
+    </issueHandlers>
 </psalm>

@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Rekalogika\TemporaryUrl\Tests\Model;
 
-class Data1
+final class Data1
 {
     public function __construct(
         private readonly string $content,

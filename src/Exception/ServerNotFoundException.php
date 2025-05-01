@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\WithHttpStatus;
 
 #[WithHttpStatus(Response::HTTP_NOT_FOUND)]
-class ServerNotFoundException extends TemporaryUrlException
+final class ServerNotFoundException extends TemporaryUrlException
 {
     /**
      * @param class-string $resourceClass

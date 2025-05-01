@@ -18,7 +18,7 @@ use Rekalogika\TemporaryUrl\Twig\TemporaryUrlTwigRuntime;
 use Twig\RuntimeLoader\FactoryRuntimeLoader;
 use Twig\Test\IntegrationTestCase;
 
-class TwigTest extends IntegrationTestCase
+final class TwigTest extends IntegrationTestCase
 {
     #[\Override]
     protected function getFixturesDir(): string

@@ -22,7 +22,7 @@ use Rekalogika\TemporaryUrl\Exception\TicketNotFoundException;
  *
  * @internal
  */
-class TemporaryUrlManager
+final class TemporaryUrlManager
 {
     /**
      * @var array<class-string,array{0:object,1:string}>

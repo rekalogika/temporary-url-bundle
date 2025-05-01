@@ -20,7 +20,7 @@ use Twig\TwigFunction;
 /**
  * Twig extension for temporary URL
  */
-class TemporaryUrlTwigExtension extends AbstractExtension
+final class TemporaryUrlTwigExtension extends AbstractExtension
 {
     #[\Override]
     public function getFilters(): array

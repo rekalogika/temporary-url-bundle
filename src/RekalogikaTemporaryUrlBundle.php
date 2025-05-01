@@ -18,7 +18,7 @@ use Rekalogika\TemporaryUrl\DependencyInjection\TemporaryUrlResourceTransformerP
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class RekalogikaTemporaryUrlBundle extends Bundle
+final class RekalogikaTemporaryUrlBundle extends Bundle
 {
     #[\Override]
     public function getPath(): string

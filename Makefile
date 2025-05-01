@@ -15,11 +15,11 @@ psalm:
 
 .PHONY: phpunit
 phpunit:
-	vendor/bin/phpunit --testdox
+	SYMFONY_DEPRECATIONS_HELPER='max[direct]=0' vendor/bin/phpunit --testdox
 
 .PHONY: php-cs-fixer
 php-cs-fixer: tools/php-cs-fixer
-	$< fix --config=.php-cs-fixer.dist.php --verbose --allow-risky=yes
+	PHP_CS_FIXER_IGNORE_ENV=1 $< fix --config=.php-cs-fixer.dist.php --verbose --allow-risky=yes
 
 .PHONY: tools/php-cs-fixer
 tools/php-cs-fixer:

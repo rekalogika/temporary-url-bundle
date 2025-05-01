@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class MockFactory
+final class MockFactory
 {
     public static function createCache(): CacheInterface
     {

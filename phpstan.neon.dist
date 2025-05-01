@@ -3,5 +3,10 @@ parameters:
     paths:
         - src
         - tests
+    ignoreErrors:
+        -
+            message: '#Parameter \#2 \$callable of class Twig\\TwigFilter constructor expects#'
+            path: src/Twig/TemporaryUrlTwigExtension.php
+            reportUnmatched: false
 includes:
     - vendor/phpstan/phpstan-mockery/extension.neon

@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\HttpFoundation\Response;
 
-class TemporaryUrlPass implements CompilerPassInterface
+final class TemporaryUrlPass implements CompilerPassInterface
 {
     #[\Override]
     public function process(ContainerBuilder $container): void
@@ -86,9 +86,11 @@ class TemporaryUrlPass implements CompilerPassInterface
                     throw new \RuntimeException(\sprintf('Invalid server service "%s": method "%s()" must only have one argument.', $serviceId, $method));
                 }
 
+                // @phpstan-ignore nullCoalesce.offset
                 $firstParameter = $parameters[0] ?? null;
 
-                if (!$firstParameter) {
+                // @phpstan-ignore identical.alwaysFalse
+                if ($firstParameter === null) {
                     throw new \RuntimeException(\sprintf('Invalid server service "%s": method "%s()" must have one argument.', $serviceId, $method));
                 }
 
