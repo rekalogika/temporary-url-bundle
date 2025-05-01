@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Rekalogika\TemporaryUrl\Tests\Model;
 
-final class Data1
+final readonly class Data1
 {
     public function __construct(
-        private readonly string $content,
+        private string $content,
     ) {}
 
     public function getContent(): string

@@ -5,6 +5,7 @@
 * test: fix twig test deprecations
 * test: update phpstan & psalm
 * deps: update js deps
+* chore: rector run
 
 ## 1.6.1
 
