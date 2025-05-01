@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.2
+
+* test: fix twig test deprecations
+
 ## 1.6.1
 
 * deps: update javascript dependencies

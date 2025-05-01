@@ -51,4 +51,9 @@ class TwigTest extends IntegrationTestCase
             ]),
         ];
     }
+
+    protected static function getFixturesDirectory(): string
+    {
+        return __DIR__ . '/Twig';
+    }
 }
