@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\WithHttpStatus;
 
 #[WithHttpStatus(Response::HTTP_NOT_FOUND)]
-class WrongSessionException extends TemporaryUrlException
+final class WrongSessionException extends TemporaryUrlException
 {
     public function __construct(
         string $ticketId,

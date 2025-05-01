@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
+final class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
 {
     #[\Override]
     public function process(ContainerBuilder $container): void
@@ -76,9 +76,11 @@ class TemporaryUrlResourceTransformerPass implements CompilerPassInterface
                     throw new \RuntimeException(\sprintf('Invalid transformer service "%s": method "%s()" must only have one argument.', $serviceId, $method));
                 }
 
+                // @phpstan-ignore nullCoalesce.offset
                 $firstParameter = $parameters[0] ?? null;
 
-                if (!$firstParameter) {
+                // @phpstan-ignore identical.alwaysFalse
+                if ($firstParameter === null) {
                     throw new \RuntimeException(\sprintf('Invalid transformer service "%s": method "%s()" must have one argument.', $serviceId, $method));
                 }
 

@@ -18,7 +18,7 @@ namespace Rekalogika\TemporaryUrl\Internal;
  *
  * @internal
  */
-class TemporaryUrlResult
+final class TemporaryUrlResult
 {
     public function __construct(
         private readonly string $ticketId,

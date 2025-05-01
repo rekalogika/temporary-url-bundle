@@ -15,7 +15,7 @@ namespace Rekalogika\TemporaryUrl\Tests\Model;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class DataServer
+final class DataServer
 {
     public function serve(Data1|Data2 $data): Response
     {

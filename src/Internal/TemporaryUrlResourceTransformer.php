@@ -18,7 +18,7 @@ namespace Rekalogika\TemporaryUrl\Internal;
  *
  * @internal
  */
-class TemporaryUrlResourceTransformer
+final class TemporaryUrlResourceTransformer
 {
     /**
      * @var array<class-string,array{0:object,1:string}>

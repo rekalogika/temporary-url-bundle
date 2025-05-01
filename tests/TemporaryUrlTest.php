@@ -27,7 +27,7 @@ use Rekalogika\TemporaryUrl\Tests\Model\Data3;
 use Rekalogika\TemporaryUrl\Tests\Model\UnserializableData;
 use Symfony\Component\HttpFoundation\Response;
 
-class TemporaryUrlTest extends TestCase
+final class TemporaryUrlTest extends TestCase
 {
     private ?ContainerInterface $container = null;
 

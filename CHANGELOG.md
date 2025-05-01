@@ -3,6 +3,7 @@
 ## 1.6.2
 
 * test: fix twig test deprecations
+* test: update phpstan & psalm
 
 ## 1.6.1
 

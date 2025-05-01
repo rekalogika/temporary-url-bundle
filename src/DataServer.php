@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
  * Turns a Data object into a HTTP response. Serves as an example on how to
  * implement a temporary URL server.
  */
-class DataServer
+final class DataServer
 {
     #[AsTemporaryUrlServer]
     public function respond(Data $dataResource): Response

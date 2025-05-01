@@ -13,4 +13,4 @@ declare(strict_types=1);
 
 namespace Rekalogika\TemporaryUrl\Tests;
 
-class DataWithoutServer {}
+final class DataWithoutServer {}
