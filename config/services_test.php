@@ -11,6 +11,7 @@
 
 declare(strict_types=1);
 
+use Psr\Cache\CacheItemPoolInterface;
 use Psr\SimpleCache\CacheInterface;
 use Rekalogika\TemporaryUrl\Internal\TemporaryUrlController;
 use Rekalogika\TemporaryUrl\Internal\TemporaryUrlManager;
@@ -29,7 +30,7 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (ContainerConfigurator $containerConfigurator): void {
     $services = $containerConfigurator->services();
 
-    $services->set(CacheInterface::class)
+    $services->set(CacheItemPoolInterface::class)
         ->factory([MockFactory::class, 'createCache']);
 
     $services->set(RequestStack::class)
