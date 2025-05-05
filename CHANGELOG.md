@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.1
+
+* fix: fix wrong assumption that service id must be the class name
+
 ## 1.7.0
 
 * test: fix twig test deprecations

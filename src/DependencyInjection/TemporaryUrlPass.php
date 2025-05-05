@@ -33,13 +33,13 @@ final class TemporaryUrlPass implements CompilerPassInterface
             ->findTaggedServiceIds('rekalogika.temporary_url.resource_server', true);
 
         foreach ($servers as $serviceId => $tags) {
-            $r = $container->getReflectionClass($serviceId);
+            $service = $container->getDefinition($serviceId);
+            $class = $service->getClass();
+            $reflectionClass = $container->getReflectionClass($class);
 
-            if (null === $r) {
+            if (null === $reflectionClass) {
                 throw new \RuntimeException(\sprintf('Invalid service: class "%s" does not exist.', $serviceId));
             }
-
-            $service = $container->getDefinition($serviceId);
 
             /** @var array<string,mixed> $tag */
             foreach ($tags as $tag) {
@@ -51,7 +51,7 @@ final class TemporaryUrlPass implements CompilerPassInterface
 
                 // method checking
 
-                $reflectionMethod = $r->getMethod($method);
+                $reflectionMethod = $reflectionClass->getMethod($method);
 
                 if (!$reflectionMethod->isPublic()) {
                     throw new \RuntimeException(\sprintf('Invalid definition: method "%s" in service ID "%s" is not public.', $method, $serviceId));
