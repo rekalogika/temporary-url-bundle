@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.7.1
+## 1.7.2
 
 * fix: fix wrong assumption that service id must be the class name
 
