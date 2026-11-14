@@ -27,5 +27,11 @@
                 <file name="tests/TwigTest.php" />
             </errorLevel>
         </MissingOverrideAttribute>
+        <DeprecatedInterface>
+            <errorLevel type="suppress">
+                <!-- deprecated in Symfony 8.1, but still implemented by the non-deprecated Bundle base class -->
+                <referencedClass name="Symfony\Component\HttpKernel\Bundle\BundleInterface" />
+            </errorLevel>
+        </DeprecatedInterface>
     </issueHandlers>
 </psalm>
