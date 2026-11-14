@@ -119,6 +119,11 @@ final class RekalogikaTemporaryUrlExtension extends Extension implements Prepend
             return false;
         }
 
+        // Symfony 8.2 moved AssetMapper out of FrameworkBundle into AssetMapperBundle
+        if (isset($bundlesMetadata['AssetMapperBundle'])) {
+            return true;
+        }
+
         $frameworkBundleMetadata = $bundlesMetadata['FrameworkBundle'] ?? null;
 
         if (!\is_array($frameworkBundleMetadata)) {

@@ -18,6 +18,10 @@ use Rekalogika\TemporaryUrl\DependencyInjection\TemporaryUrlResourceTransformerP
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * @psalm-suppress DeprecatedInterface Symfony 8.1 deprecates HttpKernel's
+ * BundleInterface, but the non-deprecated Bundle base class still implements it.
+ */
 final class RekalogikaTemporaryUrlBundle extends Bundle
 {
     #[\Override]
